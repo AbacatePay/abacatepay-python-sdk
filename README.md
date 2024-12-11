@@ -12,7 +12,7 @@ pip install abacatepay
 
 ### Instalação via desenvolvimento
 
-Para o desenvolvimento, você deve clonar o repositório e instalar o pacote com o instalador de pacotes `uv` (https://docs.astral.sh/uv/). Este instalador é recomendado para projetos Python e já possui a criação de ambientes virtuais e outras dependências necessárias para o desenvolvimento:
+Para o desenvolvimento, você deve clonar o repositório e instalar o pacote com o instalador de pacotes `uv` (https://docs.astral.sh/uv/). Este instalador é recomendado para projetos Python e já possui a criação de ambientes virtuais e outras dependências necessárias para o desenvolvimento.
 
 ```bash
 uv sync
@@ -25,6 +25,21 @@ uv venv
 ```bash
 uv run pytest
 ```
+
+## Você também pode usar o [Poetry](https://python-poetry.org/docs/) para gerenciar as dependências, caso queira
+
+
+```bash
+poetry shell && poetry install
+```
+
+#### Executando os testes
+
+```bash
+poetry run pytest
+```
+
+
 
 
 ## Usage/Examples
