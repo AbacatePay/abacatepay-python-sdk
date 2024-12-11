@@ -18,12 +18,12 @@ More examples found on https://abacatepay.readme.io/
 
 import requests
 import logging
-from typing import Literal
-
-from .billing import Billing
-from ._models import Product, BillingResponse, Customer
-from ._constants import BILLING_KINDS, BILLING_METHODS, BASEURL, USERAGENT
-from ._exceptions import *
+from abacatepay.src.use_cases.billing import Billing
+from abacatepay.domain.entities.product import Product
+from abacatepay.domain.entities.customer import Customer
+from abacatepay.domain.response_models import BillingResponse
+from abacatepay.infrastructure.utils.constants import BILLING_KINDS, BILLING_METHODS, BASEURL, USERAGENT
+from abacatepay.infrastructure.utils.exceptions import *
 
 
 logger = logging.getLogger(__name__)

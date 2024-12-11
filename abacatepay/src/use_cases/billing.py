@@ -1,13 +1,15 @@
 import requests
-from ._constants import (
+from abacatepay.infrastructure.utils.constants import (
     BASEURL,
     USERAGENT,
     BILLING_KINDS,
     BILLING_METHODS,
     BILLING_STATUS,
 )
-from ._exceptions import *
-from ._models import Product, BillingResponse, Customer
+from abacatepay.infrastructure.utils.exceptions import *
+from abacatepay.domain.entities.product import Product
+from abacatepay.domain.entities.customer import Customer
+from abacatepay.domain.response_models import BillingResponse
 
 
 class Billing:

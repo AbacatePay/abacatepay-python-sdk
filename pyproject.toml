@@ -1,25 +1,22 @@
-[project]
+[tool.poetry]
 name = "abacatepay"
 version = "1.0.1"
-description = "Python SDK to interact with abacatepay's api"
+description = "Python SDK to interact with AbacatePay's API"
+authors = ["Joaquim Cassano <joaquim@cassano.com.br>"]
 readme = "README.md"
-requires-python = ">=3.10"
-dependencies = [
-    "pydantic>=2.10.3",
-    "pytest-responses>=0.5.1",
-    "requests>=2.32.3",
-]
-authors = [
-    { name="Joaquim Cassano", email="joaquim@cassano.com.br" }
-]
+packages = [{ include = "abacatepay" }]
 
-[dependency-groups]
-dev = [
-    "pytest-mock>=3.14.0",
-    "pytest>=8.3.4",
-    "responses>=0.25.3",
-    "pytest-responses>=0.5.1",
-]
+[tool.poetry.dependencies]
+python = ">=3.10"
+pydantic = "^2.10.3"
+requests = "^2.32.3"
 
-[tool.setuptools]
-package-dir = { "abacatepay" = "abacatepay" }
+[tool.poetry.dev-dependencies]
+pytest = "^8.3.4"
+pytest-mock = "^3.14.0"
+pytest-responses = "^0.5.1"
+responses = "^0.25.3"
+
+[build-system]
+requires = ["poetry-core>=1.6.1"]
+build-backend = "poetry.core.masonry.api"
