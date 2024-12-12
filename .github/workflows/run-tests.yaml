@@ -1,0 +1,34 @@
+name: Run Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  # For manual triggers
+  workflow_dispatch:
+
+jobs:
+  test:
+    if: github.actor != 'actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.15
+
+      - name: Setup tests
+        run: |
+          pip install --upgrade pip
+          curl -sSL https://install.python-poetry.org | python3 -
+          poetry config virtualenvs.create false
+          poetry install
+
+      - name: Run tests using Pytest
+        run: |
+          poetry run pytest -v
