@@ -1,34 +1,48 @@
 import requests
 from ._constants import (
     BASEURL,
-    USERAGENT,
     BILLING_KINDS,
     BILLING_METHODS,
-    BILLING_STATUS,
 )
-from ._exceptions import *
-from ._models import Product, BillingResponse, Customer
+from .utils._exceptions import *
+from .models import Product, BillingResponse, Customer
+from ._base_client import BaseClient
+from logging import getLogger
+
+logger = getLogger(__name__)
 
 
-class Billing:
-    def __init__(
+class BillingClient(BaseClient):
+    def create_billing(
         self,
         products: list[Product],
         returnURL: str,
         completionUrl: str,
-        api_key: str,
         methods: list[BILLING_METHODS] = ["PIX"],
         frequency: BILLING_KINDS = "ONE_TIME",
         customerId: str | None = None,
-        customer: Customer | None = None,
-    ):
-        self.products = products
-        self.returnURL = returnURL
-        self.completionUrl = completionUrl
-        self.methods = methods
+        customer: Customer | None = None
+    ) -> BillingResponse:
 
-        response = requests.post(
+
+        """
+        Create a new billing.
+
+        Args:
+            products: List of products to be billed.
+            returnURL: The URL the user will be redirected to after the billing is completed.
+            completionUrl: The URL the API will make a POST request after the billing is completed.
+            methods: The payment methods to be accepted. Defaults to ["PIX"].
+            frequency: The frequency of the billing. Defaults to "ONE_TIME".
+            customerId: The ID of the customer. If provided, the customer information won't be required.
+            customer: The customer information. If customerId is provided, this parameter is ignored.
+
+        Returns:
+            BillingResponse: The response with the billing data.
+        """
+        response = self._request(
             f"{BASEURL}/billing/create",
+            method="POST",
             json={
                 "products": [product.model_dump() for product in products],
                 "returnUrl": returnURL,
@@ -37,18 +51,13 @@ class Billing:
                 "frequency": frequency,
                 "customerId": customerId,
                 **({"customer": customer.model_dump()} if customer is not None else {}),
-            },
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "User-Agent": USERAGENT,
-                "Content-Type": "application/json",
-            },
+            }
         )
 
         try:
             if response.status_code == 200:
                 billing_data = BillingResponse(data=response.json()["data"])
-                self.data = billing_data
+                return billing_data
             else:
                 raise_for_status(response)
 
@@ -57,3 +66,24 @@ class Billing:
 
         except requests.exceptions.ConnectionError:
             raise APIConnectionError(message="Connection error.", request=response)
+
+
+    def list_bills(self) -> list[BillingResponse]:
+        """
+        List all bills.
+
+        Returns:
+            list[BillingResponse]: A list of billing responses.
+        """
+        logger.debug(f"Listing bills with URL: {BASEURL}/billing/list")
+        response = self._request(f"{BASEURL}/billing/list", method="GET")
+
+        try:
+            if response.status_code == 200:
+                return [BillingResponse(data=bill) for bill in response.json()["data"]]
+            else:
+                raise_for_status(response)
+        except requests.exceptions.Timeout:
+            raise APITimeoutError(request=response)
+        except requests.exceptions.ConnectionError:
+            raise APIConnectionError(message="Connection error", request=response)
