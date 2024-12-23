@@ -11,7 +11,7 @@ from logging import getLogger
 logger = getLogger(__name__)
 
 class CustomerClient(BaseClient):
-    def create_customer(self, customer: Customer) -> Customer:
+    def create(self, customer: Customer) -> Customer:
         logger.debug(f"Creating customer with URL: {BASEURL}/customer/create")
         response = self._request(f"{BASEURL}/customer/create", method="POST", json=customer.model_dump())
 
@@ -26,7 +26,7 @@ class CustomerClient(BaseClient):
             raise APIConnectionError(message="Connection error", request=response)
 
 
-    def list_customers(self) -> list[Customer]:
+    def list(self) -> list[Customer]:
       logger.debug(f"Listing customers with URL: {BASEURL}/customer/list")
       response = self._request(f"{BASEURL}/customer/list", method="GET")
       try:

@@ -13,7 +13,7 @@ logger = getLogger(__name__)
 
 
 class BillingClient(BaseClient):
-    def create_billing(
+    def create(
         self,
         products: list[Product],
         returnURL: str,
@@ -58,8 +58,7 @@ class BillingClient(BaseClient):
             if response.status_code == 200:
                 billing_data = BillingResponse(data=response.json()["data"])
                 return billing_data
-            else:
-                raise_for_status(response)
+            raise_for_status(response)
 
         except requests.exceptions.Timeout:
             raise APITimeoutError(request=response)
@@ -68,7 +67,7 @@ class BillingClient(BaseClient):
             raise APIConnectionError(message="Connection error.", request=response)
 
 
-    def list_bills(self) -> list[BillingResponse]:
+    def list(self) -> list[BillingResponse]:
         """
         List all bills.
 

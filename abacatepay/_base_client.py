@@ -4,7 +4,7 @@ from ._constants import USERAGENT
 
 class BaseClient:
     def __init__(self, api_key: str):
-        self.api_key = api_key
+        self.__api_key = api_key
 
     def _request(
         self,
@@ -16,7 +16,7 @@ class BaseClient:
             method,
             url,
             headers={
-                "Authorization": f"Bearer {self.api_key}",
+                "Authorization": f"Bearer {self.__api_key}",
                 "User-Agent": USERAGENT,
             },
             **kwargs,
