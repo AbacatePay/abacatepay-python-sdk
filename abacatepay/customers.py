@@ -1,7 +1,5 @@
 from ._constants import (
     BASEURL,
-    BILLING_KINDS,
-    BILLING_METHODS,
 )
 from .utils._exceptions import *
 from .models import Customer

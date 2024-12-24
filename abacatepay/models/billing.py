@@ -1,7 +1,6 @@
 from typing import List, Union
 from .._constants import BILLING_STATUS, BILLING_METHODS, BILLING_KINDS
-from .costumer import Customer
-from pydantic import BaseModel
+from .customer import Customer
 
 class BillingResponse:
     def __init__(self, data: dict):
