@@ -1,7 +1,7 @@
 import requests
 from ._constants import (
-    BASEURL,
-    USERAGENT,
+    BASE_URL,
+    USER_AGENT,
     BILLING_KINDS,
     BILLING_METHODS,
     BILLING_STATUS,
@@ -28,7 +28,7 @@ class Billing:
         self.methods = methods
 
         response = requests.post(
-            f"{BASEURL}/billing/create",
+            f"{BASE_URL}/billing/create",
             json={
                 "products": [product.model_dump() for product in products],
                 "returnUrl": returnURL,
@@ -40,7 +40,7 @@ class Billing:
             },
             headers={
                 "Authorization": f"Bearer {api_key}",
-                "User-Agent": USERAGENT,
+                "User-Agent": USER_AGENT,
                 "Content-Type": "application/json",
             },
         )
