@@ -1,6 +1,6 @@
 import requests
 from ._constants import (
-    BASEURL,
+    BASE_URL,
     USERAGENT,
     BILLING_KINDS,
     BILLING_METHODS,
@@ -28,7 +28,7 @@ class Billing:
         self.methods = methods
 
         response = requests.post(
-            f"{BASEURL}/billing/create",
+            f"{BASE_URL}/billing/create",
             json={
                 "products": [product.model_dump() for product in products],
                 "returnUrl": returnURL,

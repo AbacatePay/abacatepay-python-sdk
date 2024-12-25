@@ -22,7 +22,7 @@ from typing import Literal
 
 from .billing import Billing
 from ._models import Product, BillingResponse, Customer
-from ._constants import BILLING_KINDS, BILLING_METHODS, BASEURL, USERAGENT
+from ._constants import BILLING_KINDS, BILLING_METHODS, BASE_URL, USERAGENT
 from ._exceptions import *
 
 
@@ -75,8 +75,8 @@ class AbacatePay:
         )
 
     def list_bills(self) -> list[Billing]:
-        logger.debug(f"Listing bills with URL: {BASEURL}/billing/list")
-        response = self._request(f"{BASEURL}/billing/list", method="GET")
+        logger.debug(f"Listing bills with URL: {BASE_URL}/billing/list")
+        response = self._request(f"{BASE_URL}/billing/list", method="GET")
 
         try:
             if response.status_code == 200:
@@ -90,8 +90,8 @@ class AbacatePay:
 
 
     def create_customer(self, customer: Customer) -> Customer:
-        logger.debug(f"Creating customer with URL: {BASEURL}/customer/create")
-        response = self._request(f"{BASEURL}/customer/create", method="POST", json=customer.model_dump())
+        logger.debug(f"Creating customer with URL: {BASE_URL}/customer/create")
+        response = self._request(f"{BASE_URL}/customer/create", method="POST", json=customer.model_dump())
 
         try:
             if response.status_code == 200:
@@ -104,8 +104,8 @@ class AbacatePay:
             raise APIConnectionError(message="Connection error", request=response)
 
     def list_customers(self) -> list[Customer]:
-        logger.debug(f"Listing customers with URL: {BASEURL}/customer/list")
-        response = self._request(f"{BASEURL}/customer/list", method="GET")
+        logger.debug(f"Listing customers with URL: {BASE_URL}/customer/list")
+        response = self._request(f"{BASE_URL}/customer/list", method="GET")
 
         try:
             if response.status_code == 200:
