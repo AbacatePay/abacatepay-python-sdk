@@ -1,7 +1,7 @@
 import requests
 from ._constants import (
     BASE_URL,
-    USERAGENT,
+    USER_AGENT,
     BILLING_KINDS,
     BILLING_METHODS,
     BILLING_STATUS,
@@ -40,7 +40,7 @@ class Billing:
             },
             headers={
                 "Authorization": f"Bearer {api_key}",
-                "User-Agent": USERAGENT,
+                "User-Agent": USER_AGENT,
                 "Content-Type": "application/json",
             },
         )

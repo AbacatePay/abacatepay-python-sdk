@@ -22,7 +22,7 @@ from typing import Literal
 
 from .billing import Billing
 from ._models import Product, BillingResponse, Customer
-from ._constants import BILLING_KINDS, BILLING_METHODS, BASE_URL, USERAGENT
+from ._constants import BILLING_KINDS, BILLING_METHODS, BASE_URL, USER_AGENT
 from ._exceptions import *
 
 
@@ -48,7 +48,7 @@ class AbacatePay:
             url,
             headers={
                 "Authorization": f"Bearer {self.__api_key}",
-                "User-Agent": USERAGENT,
+                "User-Agent": USER_AGENT,
             },
             **kwargs,
         )
