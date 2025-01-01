@@ -1,11 +1,19 @@
 import requests
 from ._constants import (
-    BASEURL,
+    BASE_URL,
     BILLING_KINDS,
     BILLING_METHODS,
 )
-from .utils._exceptions import *
-from .models import Product, BillingResponse, Customer
+from .utils._exceptions import (
+    APITimeoutError,
+    APIConnectionError,
+    raise_for_status
+)
+from .models import (
+    Product,
+    BillingResponse,
+    Customer,
+)
 from ._base_client import BaseClient
 from logging import getLogger
 
@@ -41,7 +49,7 @@ class BillingClient(BaseClient):
             BillingResponse: The response with the billing data.
         """
         response = self._request(
-            f"{BASEURL}/billing/create",
+            f"{BASE_URL}/billing/create",
             method="POST",
             json={
                 "products": [product.model_dump() for product in products],
@@ -74,8 +82,8 @@ class BillingClient(BaseClient):
         Returns:
             list[BillingResponse]: A list of billing responses.
         """
-        logger.debug(f"Listing bills with URL: {BASEURL}/billing/list")
-        response = self._request(f"{BASEURL}/billing/list", method="GET")
+        logger.debug(f"Listing bills with URL: {BASE_URL}/billing/list")
+        response = self._request(f"{BASE_URL}/billing/list", method="GET")
 
         try:
             if response.status_code == 200:
