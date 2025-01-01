@@ -1,6 +1,6 @@
 import requests
 from typing import Literal
-from ._constants import USERAGENT
+from ._constants import USER_AGENT
 
 class BaseClient:
     def __init__(self, api_key: str):
@@ -17,7 +17,7 @@ class BaseClient:
             url,
             headers={
                 "Authorization": f"Bearer {self.__api_key}",
-                "User-Agent": USERAGENT,
+                "User-Agent": USER_AGENT,
             },
             **kwargs,
         )
