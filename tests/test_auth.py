@@ -1,6 +1,6 @@
 import pytest
 from abacatepay import AbacatePay
-from abacatepay._exceptions import ForbiddenRequest
+from abacatepay.utils._exceptions import ForbiddenRequest
 
 
 def test_wrong_key_running_function(invalid_token_response):
@@ -8,5 +8,4 @@ def test_wrong_key_running_function(invalid_token_response):
 
     client = AbacatePay(rightKey)
     with pytest.raises(ForbiddenRequest):
-        client.list_bills()
-  
+        client.billing.list()
