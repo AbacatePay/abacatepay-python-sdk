@@ -8,4 +8,4 @@ def test_wrong_key_running_function(invalid_token_response):
 
     client = AbacatePay(rightKey)
     with pytest.raises(ForbiddenRequest):
-        client.list_bills()
+        client.billing.list()
