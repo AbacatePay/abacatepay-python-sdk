@@ -3,34 +3,35 @@
 ![PyPI Version](https://img.shields.io/pypi/v/abacatepay?label=pypi%20package)
 ![PyPI Downloads](https://img.shields.io/pypi/dm/abacatepay)
 
-> A Python SDK to simplify interactions with the AbacatePay API. <br />
-> This SDK provides tools for billing management, customer handling, and more.
+> Um SDK Python para simplificar a interação com a API do AbacatePay. <br />
+> Esse SDK fornece ferramentas para gerenciamento de faturamento, gerenciamento de clientes e muito mais.
 
-
-[English] | [Português](./README-pt.md)
----
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Getting Started](#getting-started)
-- [Usage Examples](#usage-examples)
-  - [Create a Billing](#create-a-billing)
-  - [List All Billings](#list-all-billings)
-  - [Customer Management](#customer-management)
-- [Contributing](#contributing)
+[Inglês](README.md) | [Português]
 
 ---
 
-## Installation
+<!-- ## Table of Contents -->
+## Índice
 
-### Using pip
+- [Instalação](#instalação)
+- [Iniciando](#iniciando)
+- [Exemplos de Uso](#exemplos-de-uso)
+  - [Criar uma fatura](#criar-uma-fatura)
+  - [Listar todas as faturas](#listar-todas-as-faturas)
+  - [Gerenciamento de clientes](#gerenciamento-de-clientes)
+- [Contribuindo](#contribuindo)
+
+---
+
+## Instalação
+
+### Usando pip
 
 ```bash
 pip install abacatepay
 ```
 
-### Using Poetry
+### Usando Poetry
 
 ```bash
 poetry add abacatepay
@@ -38,9 +39,9 @@ poetry add abacatepay
 
 ---
 
-## Getting Started
+## Iniciando
 
-To use the SDK, import it and initialize the client with your API key:
+Para usar o SDK, importe-o e inicialize o cliente com sua chave de API:
 
 ```python
 import abacatepay
@@ -50,9 +51,9 @@ client = abacatepay.AbacatePay(api_key="<your-api-key>")
 
 ---
 
-## Usage Examples
+## Exemplos de Uso
 
-### Create a Billing
+### Criar uma fatura
 
 ```python
 from abacatepay.models import Product
@@ -78,7 +79,7 @@ billing = client.billing.create(
 print(billing.data.url)
 ```
 
-### List All Billings
+### Listar todas as faturas
 
 ```python
 billings = client.billing.list()
@@ -86,7 +87,7 @@ for billing in billings:
     print(billing.id, billing.status)
 ```
 
-### Customer Management
+### Gerenciamento de clientes
 
 ```python
 from abacatepay.models import Customer
@@ -103,39 +104,39 @@ print(created_customer.id)
 
 ---
 
-## Contributing
+## Contribuindo
 
-We welcome contributions to the AbacatePay SDK! Follow the steps below to get started:
+Bom-vindo a contribuições para o SDK do AbacatePay! Siga os passos abaixo para começar:
 
-1. Fork the repository on GitHub.
+1. Fork o repositório no GitHub.
 
-2. Clone your fork locally:
+2. Clone seu fork localmente:
 
    ```bash
    git clone https://github.com/your-username/abacatepay.git
    cd abacatepay
    ```
 
-3. Set up the virtual environment using [poetry](https://python-poetry.org/):
-> If you don't have poetry installed, you can install following the instructions [here](https://python-poetry.org/docs/#installing-with-the-official-installer).
+3. Configure o ambiente virtual usando [poetry](https://python-poetry.org/):
+> Se você não tiver poetry instalado, você pode instalar seguindo as instruções [aqui](https://python-poetry.org/docs/#installing-with-the-official-installer).
 
    ```bash
    poetry install
    ```
 
-4. Make your changes in a new branch:
+4. Faça suas alterações em uma nova branch:
 
    ```bash
    git checkout -b feature-name
    ```
 
-5. Run tests to ensure your changes don’t break existing functionality:
+5. Execute os testes para garantir que suas alterações não quebrem a funcionalidade existente:
 
    ```bash
    poetry run pytest
    ```
 
-6. Commit your changes and push the branch:
+6. Commit suas alterações e envie a branch:
 
    ```bash
    git add .
@@ -143,4 +144,4 @@ We welcome contributions to the AbacatePay SDK! Follow the steps below to get st
    git push origin feature-name
    ```
 
-7. Open a pull request on GitHub and describe your changes.
+7. Abra um pull request no GitHub e descreva suas alterações.
