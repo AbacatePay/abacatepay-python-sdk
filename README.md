@@ -7,7 +7,8 @@
 > This SDK provides tools for billing management, customer handling, and more.
 
 
-[English] | [Português](./README-pt.md)
+[English](README.md) | [Português](README-pt.md)
+
 ---
 
 ## Table of Contents

@@ -6,11 +6,10 @@
 > Um SDK Python para simplificar a interação com a API do AbacatePay. <br />
 > Esse SDK fornece ferramentas para gerenciamento de faturamento, gerenciamento de clientes e muito mais.
 
-[Inglês](README.md) | [Português]
+[Inglês](README.md) | [Português](README-pt.md)
 
 ---
 
-<!-- ## Table of Contents -->
 ## Índice
 
 - [Instalação](#instalação)
