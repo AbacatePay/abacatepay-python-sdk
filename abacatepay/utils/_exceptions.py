@@ -127,25 +127,23 @@ class InternalServerError(APIStatusError):
 
 
 def raise_for_status(response: requests.Response) -> None:
-    if response.status_code == 200:
+    code_exc_dict = {
+        400: BadRequestError(response=response),
+        401: UnauthorizedRequest(response=response),
+        403: ForbiddenRequest(response=response),
+        404: NotFoundError(response=response),
+        500: InternalServerError(response=response),
+    }
+
+    code = response.status_code
+    if code == 200:
         return
-
-    elif response.status_code == 400:
-        raise BadRequestError(response=response)
-
-    elif response.status_code == 401:
-        raise ForbiddenRequest(response=response)
-
-    elif response.status_code == 403:
-        raise UnauthorizedRequest(response=response)
-
-    elif response.status_code == 404:
-        raise NotFoundError(response=response)
-
-    elif response.status_code == 500:
-        raise InternalServerError(response=response)
-
-    elif response.status_code >= 400:
+    
+    if code not in code_exc_dict  and code >= 400:
         raise APIStatusError(message=response.text, response=response)
-
-    raise APIError(message=response.text, request=response.request)
+    
+    raise code_exc_dict.get(
+        response.status_code,
+        APIError(message=response.text, request=response.request)
+    )
+    
