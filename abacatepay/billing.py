@@ -1,13 +1,7 @@
-import requests
 from ._constants import (
     BASE_URL,
     BILLING_KINDS,
     BILLING_METHODS,
-)
-from .utils._exceptions import (
-    APITimeoutError,
-    APIConnectionError,
-    raise_for_status
 )
 from .models import (
     Product,
@@ -62,18 +56,8 @@ class BillingClient(BaseClient):
             }
         )
 
-        try:
-            if response.status_code == 200:
-                billing_data = BillingResponse(data=response.json()["data"])
-                return billing_data
-            raise_for_status(response)
-
-        except requests.exceptions.Timeout:
-            raise APITimeoutError(request=response)
-
-        except requests.exceptions.ConnectionError:
-            raise APIConnectionError(message="Connection error.", request=response)
-
+        billing_data = BillingResponse(data=response.json()["data"])
+        return billing_data
 
     def list(self) -> list[BillingResponse]:
         """
@@ -84,13 +68,4 @@ class BillingClient(BaseClient):
         """
         logger.debug(f"Listing bills with URL: {BASE_URL}/billing/list")
         response = self._request(f"{BASE_URL}/billing/list", method="GET")
-
-        try:
-            if response.status_code == 200:
-                return [BillingResponse(data=bill) for bill in response.json()["data"]]
-            else:
-                raise_for_status(response)
-        except requests.exceptions.Timeout:
-            raise APITimeoutError(request=response)
-        except requests.exceptions.ConnectionError:
-            raise APIConnectionError(message="Connection error", request=response)
+        return [BillingResponse(data=bill) for bill in response.json()["data"]]
