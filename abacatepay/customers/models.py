@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class Customer(BaseModel):
     """
     Customer model

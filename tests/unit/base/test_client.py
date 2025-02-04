@@ -4,8 +4,8 @@ import pytest
 from requests import Response
 from requests.exceptions import ConnectionError, Timeout
 
-from abacatepay._base_client import BaseClient
-from abacatepay.utils._exceptions import (
+from abacatepay.base.client import BaseClient
+from abacatepay.utils.exceptions import (
     APIConnectionError,
     APIError,
     APITimeoutError,
@@ -57,6 +57,6 @@ def test_request_raise_the_correct_exception_when_status_is_different_of_200(res
     (ConnectionError, APIConnectionError),
 ])
 def test_request_override_requests_timeout_and_connection_error(mocker, requests_exc_class, api_exc_class):
-    mocker.patch('abacatepay._base_client.requests.Session.send', side_effect=requests_exc_class)
+    mocker.patch('abacatepay.base.client.requests.Session.send', side_effect=requests_exc_class)
     with pytest.raises(api_exc_class):
         client._request(url, "GET")
