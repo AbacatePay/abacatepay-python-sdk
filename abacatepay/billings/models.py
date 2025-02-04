@@ -1,6 +1,7 @@
 from typing import List, Union
-from .._constants import BILLING_STATUS, BILLING_METHODS, BILLING_KINDS
-from .customer import Customer
+from ..constants import BILLING_STATUS, BILLING_METHODS, BILLING_KINDS
+from ..customers.models import Customer
+
 
 class BillingResponse:
     def __init__(self, data: dict):

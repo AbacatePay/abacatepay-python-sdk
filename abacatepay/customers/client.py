@@ -1,8 +1,8 @@
-from ._constants import (
+from ..constants import (
     BASE_URL,
 )
 from .models import Customer
-from ._base_client import BaseClient
+from ..base.client import BaseClient
 from logging import getLogger
 
 logger = getLogger(__name__)

@@ -17,7 +17,7 @@ print(billing.data.url)
 More examples found on https://abacatepay.readme.io/
 """
 
-from .billing import BillingClient
+from .billings import BillingClient
 from .customers import CustomerClient
 
 class AbacatePay:
