@@ -1,7 +1,7 @@
 import requests
 from typing import Literal
-from ._constants import USER_AGENT
-from .utils._exceptions import raise_for_status, APITimeoutError, APIConnectionError
+from ..constants import USER_AGENT
+from ..utils.exceptions import raise_for_status, APITimeoutError, APIConnectionError
 
 
 class BaseClient:
