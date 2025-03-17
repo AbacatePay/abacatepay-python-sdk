@@ -56,7 +56,7 @@ client = abacatepay.AbacatePay(api_key="<your-api-key>")
 ### Create a Billing
 
 ```python
-from abacatepay.models import Product
+from abacatepay.products import Product
 
 client = abacatepay.AbacatePay(api_key="<your-api-key>")
 
@@ -90,7 +90,7 @@ for billing in billings:
 ### Customer Management
 
 ```python
-from abacatepay.models import Customer
+from abacatepay.customers import Customer
 
 customer = Customer(
     email="customer@example.com",
