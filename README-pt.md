@@ -67,11 +67,11 @@ products = [
     ),
     # ou como um dicionário
     {
-        'external_id'="321",
-        'name'="Product as dict",
-        'quantity'=1,
-        'price'=10_00,
-        'description'="Example using dict"
+        'external_id': "321",
+        'name': "Product as dict",
+        'quantity': 1,
+        'price': 10_00,
+        'description': "Example using dict"
     }
 ]
 
