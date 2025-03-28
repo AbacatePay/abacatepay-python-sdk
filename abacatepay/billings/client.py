@@ -1,38 +1,15 @@
 from logging import getLogger
-from functools import singledispatchmethod
-from typing import Any
+from typing import Optional
 from ..base.client import BaseClient
 from ..constants import BASE_URL
 from .models import Billing, BillingIn, BillingList
+from ..utils.helpers import prepare_data
 
 logger = getLogger(__name__)
 
 
 class BillingClient(BaseClient):
-    @singledispatchmethod
-    def _prepare_billing_data(self, data, kwargs) -> dict[str, Any]:
-        """Returns the final data that will be sent to API"""
-        if not (data or kwargs):
-            raise ValueError('data or named arguments must be provided')
-        
-        elif kwargs:
-            return self._parse_dict_or_kwargs(None, kwargs)
-        
-    
-    def _parse_billing_in_schema(self, data: BillingIn, kwargs) -> dict[str, Any]:
-        """It parse the output data when user pass an instance of the model BillingIn
-        to `data` positional argument.
-        """
-        return data.model_dump(by_alias=True)
-    
-    def _parse_dict_or_kwargs(self, data: dict, kwargs) -> dict[str, Any]:
-        """It parses the output data to when the user send a dict to `data` or named
-        arguments.
-        """
-        obj = data if data is not None else kwargs
-        return BillingIn.model_validate(obj).model_dump(by_alias=True)
-    
-    def create(self, data: BillingIn = None, **kwargs) -> Billing:
+    def create(self, data: Optional[BillingIn | dict] = None, **kwargs) -> Billing:
         """
         Create a new billing.
 
@@ -52,7 +29,7 @@ class BillingClient(BaseClient):
         Returns:
             Billing: The response with the billing data.
         """
-        json_data = self._prepare_billing_data(data, kwargs)
+        json_data = prepare_data(data or kwargs, BillingIn)
         logger.debug('creating billing: %s', json_data)
 
         response = self._request(

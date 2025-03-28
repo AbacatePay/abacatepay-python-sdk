@@ -4,17 +4,30 @@ from ..constants import (
 from .models import CustomerMetadata, Customer
 from ..base.client import BaseClient
 from logging import getLogger
+from ..utils.helpers import prepare_data
+from typing import Optional
 
 logger = getLogger(__name__)
 
 
 class CustomerClient(BaseClient):
-    def create(self, customer: CustomerMetadata) -> Customer:
+    def create(self, customer: Optional[CustomerMetadata | dict] = None, **kwargs) -> Customer:
+        """creates a new customer using an or named arguments
+
+        Args:
+            customer (Optional[CustomerMetadata  |  dict], optional): You customer data, it can be \
+            a dict, an instance of `abacatepay.customers.CustomerMetadata`.
+
+        Returns:
+            Customer: An instance of the new customer.
+        """
         logger.debug(f"Creating customer with URL: {BASE_URL}/customer/create")
+
+        json_data = prepare_data(customer or kwargs, CustomerMetadata)
         response = self._request(
             f"{BASE_URL}/customer/create",
             method="POST",
-            json=customer.model_dump(by_alias=True),
+            json=json_data,
         )
         return Customer(**response.json()["data"])
 

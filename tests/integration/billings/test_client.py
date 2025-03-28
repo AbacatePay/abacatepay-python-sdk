@@ -43,8 +43,8 @@ def test_create_billing_passing_a_dict(billing_response_sample, responses):
                     description="test product",
                 ),
             ],
-            'returnUrl': billing_response_sample['metadata']['returnUrl'],
-            'completionUrl': billing_response_sample['metadata']['completionUrl'],
+            'return_url': billing_response_sample['metadata']['returnUrl'],
+            'completion_url': billing_response_sample['metadata']['completionUrl'],
         }
     )
 
