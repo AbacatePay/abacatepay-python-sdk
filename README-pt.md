@@ -45,7 +45,7 @@ Para usar o SDK, importe-o e inicialize o cliente com sua chave de API:
 ```python
 import abacatepay
 
-client = abacatepay.AbacatePay(api_key="<your-api-key>")
+client = abacatepay.AbacatePay("<your-api-key>")
 ```
 
 ---
@@ -57,22 +57,28 @@ client = abacatepay.AbacatePay(api_key="<your-api-key>")
 ```python
 from abacatepay.products import Product
 
-client = abacatepay.AbacatePay(api_key="<your-api-key>")
-
 products = [
     Product(
-        externalId="123",
+        external_id="123",
         name="Test Product",
         quantity=1,
         price=5000,
         description="Example product"
-    )
+    ),
+    # ou como um dicionário
+    {
+        'external_id': "321",
+        'name': "Product as dict",
+        'quantity': 1,
+        'price': 10_00,
+        'description': "Example using dict"
+    }
 ]
 
 billing = client.billing.create(
     products=products,
-    returnURL="https://yourwebsite.com/return",
-    completionUrl="https://yourwebsite.com/complete"
+    return_url="https://yourwebsite.com/return",
+    completion_url="https://yourwebsite.com/complete"
 )
 
 print(billing.data.url)
@@ -84,20 +90,23 @@ print(billing.data.url)
 billings = client.billing.list()
 for billing in billings:
     print(billing.id, billing.status)
+
+print(len(billings))
 ```
 
 ### Gerenciamento de clientes
 
 ```python
-from abacatepay.customers import Customer
+from abacatepay.customers import CustomerMetadata
 
-customer = Customer(
+customer = CustomerMetadata(  # Também pode ser apenas um dicionário
     email="customer@example.com",
     name="Customer Name",
-    cellphone="+1234567890"
+    cellphone="(12) 3456-7890",
+    tax_id="123-456-789-10"
 )
 
-created_customer = client.customers.create(customer=customer)
+created_customer = client.customers.create(customer)
 print(created_customer.id)
 ```
 
