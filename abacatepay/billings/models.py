@@ -72,7 +72,7 @@ class Billing(BaseModel):
         amount (int): the amount to be paid (in cents).
         status (BILLING_STATUS): the current billing status.
         dev_mode (bool): if it's operating in dev mode.
-        methods (List[BILLING_METHODS]): the allowed method to the billing. 
+        methods (List[BILLING_METHODS]): the allowed method to the billing.
         products (List[ProductInline]): The list of products in the billing.
         frequency (BILLING_KINDS): The billing frequency.
         next_billing (Optional[AwareDatetime]): date and time of the next billing.
@@ -93,7 +93,7 @@ class Billing(BaseModel):
     products: List[ProductInline]
     frequency: BILLING_KINDS
     next_billing: Optional[AwareDatetime] = Field(
-        None, 
+        None,
         validation_alias=AliasChoices('next_billing', 'nextBilling'),
         serialization_alias='nextBilling',
     )
@@ -109,9 +109,9 @@ class Billing(BaseModel):
 
 
 class BillingList(BaseModel):
-    """Represents a list of Billings. It can be directly iterated and 
+    """Represents a list of Billings. It can be directly iterated and
     supports the usage of the `len` function.
-    
+
     Args:
         data (List[Billing]): the list object having all the billings.
     """
@@ -119,6 +119,6 @@ class BillingList(BaseModel):
 
     def __len__(self) -> int:
         return len(self.data)
-    
+
     def __iter__(self) -> Iterator[Billing]:
         return self.data.__iter__()
