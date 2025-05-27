@@ -88,7 +88,7 @@ class Billing(BaseModel):
     url: str
     amount: int
     status: BILLING_STATUS
-    dev_mode: bool = Field(alias='devMode')
+    dev_mode: bool = Field(validation_alias='devMode')
     methods: List[BILLING_METHODS]
     products: List[ProductInline]
     frequency: BILLING_KINDS
@@ -98,13 +98,10 @@ class Billing(BaseModel):
         serialization_alias='nextBilling',
     )
     customer: Optional[CustomerInline] = None
-    created_at: AwareDatetime = Field(alias='createdAt')
-    updated_at: AwareDatetime = Field(alias='updatedAt')
-    allow_coupons: bool = Field(
-        validation_alias=AliasChoices('allowCoupons', 'allow_coupons')
-    )
+    created_at: AwareDatetime = Field(validation_alias='createdAt')
+    updated_at: AwareDatetime = Field(validation_alias='updatedAt')
     coupons: List[str]
-    coupons_used: List[str] = Field(alias='couponsUsed')
+    coupons_used: List[str] = Field(validation_alias='couponsUsed')
     metadata: BillingMetadata
 
 
