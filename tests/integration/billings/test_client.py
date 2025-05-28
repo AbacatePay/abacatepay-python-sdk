@@ -91,18 +91,20 @@ def test_create_billing_passing_named_arguments(billing_response_sample, respons
     )
 
     billing = client.create(
-        products=[
-            Product(
-                external_id=billing_response_sample['products'][0]['externalId'],
-                name='test',
-                quantity=billing_response_sample['products'][0]['quantity'],
-                price=100,
-                description="test product",
-            ),
+        data=BillingIn(
+            products=[
+                Product(
+                    external_id=billing_response_sample['products'][0]['externalId'],
+                    name='test',
+                    quantity=billing_response_sample['products'][0]['quantity'],
+                    price=100,
+                    description="test product",
+                ),
         ],
         return_url=billing_response_sample['metadata']['returnUrl'],
         completion_url=billing_response_sample['metadata']['completionUrl'],
-    )
+    ))
+
 
     assert billing.id == billing_response_sample['id']
     assert billing.url == billing_response_sample['url']

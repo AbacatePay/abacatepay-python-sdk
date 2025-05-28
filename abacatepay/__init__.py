@@ -20,9 +20,11 @@ More examples found on https://docs.abacatepay.com/
 from .billings import BillingClient
 from .customers import CustomerClient
 from .coupons import CouponClient
+from .pixQrCode import PixQrCodeClient
 
 class AbacatePay:
     def __init__(self, api_key: str):
         self.billing = BillingClient(api_key)
         self.customers = CustomerClient(api_key)
         self.coupons = CouponClient(api_key)
+        self.pixQrCode = PixQrCodeClient(api_key)

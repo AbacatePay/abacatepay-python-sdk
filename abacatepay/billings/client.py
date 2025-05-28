@@ -1,5 +1,5 @@
 from logging import getLogger
-from typing import Optional
+from typing import Union
 from ..base.client import BaseClient
 from ..constants import BASE_URL
 from .models import Billing, BillingIn, BillingList
@@ -9,14 +9,14 @@ logger = getLogger(__name__)
 
 
 class BillingClient(BaseClient):
-    def create(self, data: Optional[BillingIn | dict] = None, **kwargs) -> Billing:
+    def create(self, data: Union[BillingIn | dict], **kwargs) -> Billing:
         """
         Create a new billing.
 
         Args:
             data (BillingIn): an instance of `abacatepay.billings.models.BillingIn` a dict \
             or the named params following the model schema.
-        
+
         Keyword args:
             products (List[Product]): List of products to be billed.
             returnURL (str): The URL the user will be redirected to after the billing is completed.
