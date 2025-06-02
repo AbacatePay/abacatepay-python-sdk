@@ -9,7 +9,7 @@ from ..utils.helpers import prepare_data
 logger = getLogger(__name__)
 
 class PixQrCodeClient(BaseClient):
-  def create(self, data: Union[PixQrCodeIn, dict]) -> PixQrCode:
+  def create(self, data: Union[PixQrCodeIn, dict], **kwargs) -> PixQrCode:
     """
     Create a new Pix QR Code.
 
@@ -21,7 +21,7 @@ class PixQrCodeClient(BaseClient):
     Returns:
         PixQrCode: The created Pix QR Code object.
     """
-    json_data = prepare_data(data, PixQrCodeIn)
+    json_data = prepare_data(data or kwargs, PixQrCodeIn)
     logger.debug('Creating Pix QR Code: %s', json_data)
 
     response = self._request(

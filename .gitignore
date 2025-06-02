@@ -178,3 +178,4 @@ pyrightconfig.json
 
 #Development files
 a.py
+.vscode/settings.json
