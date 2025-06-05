@@ -23,4 +23,6 @@ class PixQrCodeIn(BaseModel):
   amount: int = Field(..., description="Amount to be paid in cents.", example=100)
   expires_in: Optional[int] = Field(None, description="Expiration time in seconds. Defaults to None.", example=3600)
   description: Optional[str] = Field(None, description="A description for the Pix QR Code. Defaults to None.", example="Payment for services")
-  customer: Union[dict, CustomerMetadata] = Field(None, description="Customer information. Defaults to None.")
+  customer: Optional[Union[dict, CustomerMetadata]] = Field(
+        {}, description="Customer information. Optional."
+  )
