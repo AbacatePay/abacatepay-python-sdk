@@ -11,13 +11,13 @@ logger = getLogger(__name__)
 
 class BillingClient(BaseClient):
     def create(
-        self, data: BillingIn | dict[str, Any], **kwargs: Any
+        self, data: BillingIn | dict[str, Any] | None = None, **kwargs: Any
     ) -> Billing:
         """
         Create a new billing.
 
         Args:
-            data (BillingIn): an instance of
+            data (BillingIn | dict[str, Any] | None): an instance of
                 `abacatepay.billings.models.BillingIn` a dict
                 or the named params following the model schema.
 
