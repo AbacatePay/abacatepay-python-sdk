@@ -114,7 +114,7 @@ print(created_customer.id)
 
 ---
 
-## 🧑‍💻 Contributing
+## Contributing
 
 We welcome contributions to the **AbacatePay SDK**!
 To get started, please follow the steps in our [Contributing Guide](./CONTRIBUTING.md).

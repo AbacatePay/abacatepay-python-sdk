@@ -112,7 +112,7 @@ print(created_customer.id)
 
 ---
 
-## 🧑‍💻 Contribuindo
+## Contribuindo
 
 Contribuições para o **SDK do AbacatePay** são muito bem-vindas!
 Para colaborar, siga as instruções do nosso [guia de contribuição](./CONTRIBUTING-pt.md).
