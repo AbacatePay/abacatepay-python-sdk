@@ -1,6 +1,7 @@
-from typing import Optional, Annotated
+from typing import Annotated, Optional
+
 from annotated_types import Ge
-from pydantic import BaseModel, Field, AliasChoices
+from pydantic import AliasChoices, BaseModel, Field
 
 
 class Product(BaseModel):
@@ -25,7 +26,7 @@ class Product(BaseModel):
 
 class ProductInline(BaseModel):
     """Represents a product inside a Billing.
-    
+
     Args:
         id (str): the product ID.
         external_id (str): the product ID in your application.

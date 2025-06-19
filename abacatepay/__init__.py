@@ -9,7 +9,19 @@ from abacatepay.models import Product
 token = "<your api token>"
 client = AbacatePay(token)
 
-billing = client.billing.create(products=[Product(externalId="123", name="Teste", quantity=1, price=101, description="Teste")], returnURL="https://abacatepay.com", completionUrl="https://abacatepay.com")
+billing = client.billing.create(
+    products=[
+        Product(
+            external_id="123",
+            name="Teste",
+            quantity=1,
+            price=101,
+            description="Teste"
+        )
+    ],
+    return_url="https://abacatepay.com",
+    completion_url="https://abacatepay.com"
+)
 print(billing.data.url)
 # > https://abacatepay.com/pay/aaaaaaa
 ```
@@ -18,9 +30,10 @@ More examples found on https://docs.abacatepay.com/
 """
 
 from .billings import BillingClient
-from .customers import CustomerClient
 from .coupons import CouponClient
+from .customers import CustomerClient
 from .pixQrCode import PixQrCodeClient
+
 
 class AbacatePay:
     def __init__(self, api_key: str):

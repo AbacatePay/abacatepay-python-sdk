@@ -1,5 +1,6 @@
 from typing import Annotated
-from pydantic import BaseModel, Field, AliasChoices, StringConstraints
+
+from pydantic import AliasChoices, BaseModel, Field, StringConstraints
 
 
 class CustomerMetadata(BaseModel):
@@ -22,7 +23,7 @@ class CustomerMetadata(BaseModel):
 
 class CustomerInline(BaseModel):
     """The customer model attached to other models
-    
+
     Args:
         metadata (Customer): the metadata of the customer.
     """
@@ -52,17 +53,17 @@ class Customer(CustomerInline):
     def tax_id(self) -> str:
         """the customer identification (CPF or CNPJ)."""
         return self.metadata.tax_id
-    
+
     @property
     def name(self) -> str:
         """the customer's name"""
         return self.metadata.name
-    
+
     @property
     def email(self) -> str:
         """the customer's email"""
         return self.metadata.email
-    
+
     @property
     def cellphone(self) -> str:
         """the customer's phone number"""
