@@ -112,44 +112,7 @@ print(created_customer.id)
 
 ---
 
-## Contribuindo
+## 🧑‍💻 Contribuindo
 
-Bom-vindo a contribuições para o SDK do AbacatePay! Siga os passos abaixo para começar:
-
-1. Fork o repositório no GitHub.
-
-2. Clone seu fork localmente:
-
-   ```bash
-   git clone https://github.com/your-username/abacatepay.git
-   cd abacatepay
-   ```
-
-3. Configure o ambiente virtual usando [poetry](https://python-poetry.org/):
-> Se você não tiver poetry instalado, você pode instalar seguindo as instruções [aqui](https://python-poetry.org/docs/#installing-with-the-official-installer).
-
-   ```bash
-   poetry install
-   ```
-
-4. Faça suas alterações em uma nova branch:
-
-   ```bash
-   git checkout -b feature-name
-   ```
-
-5. Execute os testes para garantir que suas alterações não quebrem a funcionalidade existente:
-
-   ```bash
-   poetry run pytest
-   ```
-
-6. Commit suas alterações e envie a branch:
-
-   ```bash
-   git add .
-   git commit -m "Add feature or fix description"
-   git push origin feature-name
-   ```
-
-7. Abra um pull request no GitHub e descreva suas alterações.
+Contribuições para o **SDK do AbacatePay** são muito bem-vindas!
+Para colaborar, siga as instruções do nosso [guia de contribuição](./CONTRIBUTING-pt.md).
