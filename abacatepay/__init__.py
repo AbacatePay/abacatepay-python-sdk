@@ -4,10 +4,10 @@ The Python SDK for the AbacatePay API
 Basic usage:
 ```python
 import abacatepay
-from abacatepay.models import Product
+from abacatepay.products import Product
 
 token = "<your api token>"
-client = AbacatePay(token)
+client = abacatepay.AbacatePay(token)
 
 billing = client.billing.create(
     products=[
