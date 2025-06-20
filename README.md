@@ -116,42 +116,5 @@ print(created_customer.id)
 
 ## Contributing
 
-We welcome contributions to the AbacatePay SDK! Follow the steps below to get started:
-
-1. Fork the repository on GitHub.
-
-2. Clone your fork locally:
-
-   ```bash
-   git clone https://github.com/your-username/abacatepay.git
-   cd abacatepay
-   ```
-
-3. Set up the virtual environment using [poetry](https://python-poetry.org/):
-> If you don't have poetry installed, you can install following the instructions [here](https://python-poetry.org/docs/#installing-with-the-official-installer).
-
-   ```bash
-   poetry install
-   ```
-
-4. Make your changes in a new branch:
-
-   ```bash
-   git checkout -b feature-name
-   ```
-
-5. Run tests to ensure your changes don’t break existing functionality:
-
-   ```bash
-   poetry run pytest
-   ```
-
-6. Commit your changes and push the branch:
-
-   ```bash
-   git add .
-   git commit -m "Add feature or fix description"
-   git push origin feature-name
-   ```
-
-7. Open a pull request on GitHub and describe your changes.
+We welcome contributions to the **AbacatePay SDK**!
+To get started, please follow the steps in our [Contributing Guide](./CONTRIBUTING.md).

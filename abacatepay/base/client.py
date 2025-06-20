@@ -1,7 +1,13 @@
+from typing import Any, Literal
+
 import requests
-from typing import Literal
+
 from ..constants import USER_AGENT
-from ..utils.exceptions import raise_for_status, APITimeoutError, APIConnectionError
+from ..utils.exceptions import (
+    APIConnectionError,
+    APITimeoutError,
+    raise_for_status,
+)
 
 
 class BaseClient:
@@ -11,15 +17,15 @@ class BaseClient:
     def _request(
         self,
         url: str,
-        method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"] = "GET",
-        **kwargs,
-    ):
+        method: Literal['GET', 'POST', 'PUT', 'PATCH', 'DELETE'] = 'GET',
+        **kwargs: Any,
+    ) -> requests.Response:
         request = requests.Request(
             method,
             url,
             headers={
-                "Authorization": f"Bearer {self.__api_key}",
-                "User-Agent": USER_AGENT,
+                'Authorization': f'Bearer {self.__api_key}',
+                'User-Agent': USER_AGENT,
             },
             **kwargs,
         )
@@ -35,4 +41,6 @@ class BaseClient:
             raise APITimeoutError(request=request)
 
         except requests.exceptions.ConnectionError:
-            raise APIConnectionError(message="Connection error.", request=request)
+            raise APIConnectionError(
+                message='Connection error.', request=request
+            )

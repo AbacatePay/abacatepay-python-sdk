@@ -1,8 +1,5 @@
 from .client import PixQrCodeClient
-from .models import (PixQrCode,
-                     PixStatus,
-                     PixQrCodeIn
-)
+from .models import PixQrCode, PixQrCodeIn, PixStatus
 
 __all__ = [
     "PixQrCodeClient",
