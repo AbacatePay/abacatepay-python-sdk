@@ -1,0 +1,22 @@
+site_name: AbacatePay
+repo_url: https://github.com/AbacatePay/abacatepay-python-sdk
+edit_uri: blob/main/docs/
+site_description: O SDK oficial de Python para integram com a AbacatePay.
+copyright: Copyright © 2024 AbacatePay
+
+theme:
+  name: material
+  language: pt-BR
+  favicon: assets/icons/favicon-32x32.png
+  logo: assets/icons/logo.svg
+  title: AbacatePay
+
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+
+    - name: Portuguese (BR)
+      link: /
+      lang: pt-BR
