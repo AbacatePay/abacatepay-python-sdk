@@ -1,0 +1,2 @@
+# Coupons reference
+::: abacatepay.coupons

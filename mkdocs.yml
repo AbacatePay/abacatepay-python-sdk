@@ -4,19 +4,54 @@ edit_uri: blob/main/docs/
 site_description: O SDK oficial de Python para integram com a AbacatePay.
 copyright: Copyright © 2024 AbacatePay
 
+nav:
+  - Inicio: index.md
+  - Como contribuir: contributing.md
+  - Referencia da API (en):
+    - Billings: api/billings.md
+    - Coupons: api/coupons.md
+    - Customers: api/customers.md
+    - PIX QRCode: api/PIX_QRCode.md
+    - Products: api/products.md
+
 theme:
   name: material
   language: pt-BR
   favicon: assets/icons/favicon-32x32.png
   logo: assets/icons/logo.svg
   title: AbacatePay
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Alterar para tema claro
+      primary: green
+      accent: teal
 
-extra:
-  alternate:
-    - name: English
-      link: /en/
-      lang: en
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Alterar para tema escuro
+      primary: green
+      accent: teal
 
-    - name: Portuguese (BR)
-      link: /
-      lang: pt-BR
+  icon:
+    annotation: material/plus-circle
+  features:
+    - content.code.annotate
+
+plugins:
+- macros
+- search
+- mkdocstrings:
+    handlers:
+      python:
+        paths: [abacatepay]
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.blocks.admonition

@@ -1,0 +1,2 @@
+# Customers reference
+::: abacatepay.pixQrCode
