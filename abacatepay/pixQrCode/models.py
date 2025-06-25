@@ -7,6 +7,21 @@ from ..customers.models import CustomerMetadata
 
 
 class PixQrCode(BaseModel):
+    """
+    A representation of a Pix QRCode.
+
+    Attributes:
+        id (str): Unique identifier of the Pix QRCode.
+        amount (int): Amount to be paid.
+        status (str): Information about the status of the Pix QRCode.
+        dev_mode (bool): Environment in which the Pix QRCode was created.
+        brcode (str): Copy-and-paste code of the Pix QRCode.
+        brcode_base64 (str): Base64 image of the Pix QRCode.
+        platform_fee (int): Platform fees.
+        created_at (str): Creation date of the Pix QRCode.
+        updated_at (str): Update date of the Pix QRCode.
+        expires_at (str): Expiration date of the Pix QRCode.
+    """
     id: str = Field(
         description='Unique identifier of the Pix QRCode.',
         examples=['pix_char_123456'],
@@ -57,6 +72,12 @@ class PixQrCode(BaseModel):
 
 
 class PixStatus(BaseModel):
+    """Represents the status of a Pix QRCode.
+
+    Attributes:
+        status (str): Information about the status of the Pix QRCode.
+        expires_at (str): Expiration date of the Pix QRCode.
+    """
     status: PIX_QR_CODE_STATUS = Field(
         description=(
             'Information about the status of the Pix QRCode. '
@@ -72,6 +93,16 @@ class PixStatus(BaseModel):
 
 
 class PixQrCodeIn(BaseModel):
+    """Represents a Pix QRCode model for creation.
+
+    Attributes:
+        amount (int): Amount to be paid in cents.
+        expires_in (int | None): Expiration time in seconds. Defaults to None.
+        description (str | None): A description for the Pix QR Code. Defaults
+            to None.
+        customer (dict[str, Any] | CustomerMetadata): Customer information.
+            Optional.
+    """
     amount: int = Field(
         description='Amount to be paid in cents.',
         examples=[100],
