@@ -1,2 +1,6 @@
 requests
 pydantic
+mkdocs-material
+mkdocs
+mkdocs-macros-plugin
+mkdocstrings-python
