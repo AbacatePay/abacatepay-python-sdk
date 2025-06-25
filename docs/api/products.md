@@ -1,2 +1,2 @@
 # Customers reference
-::: abacatepay.products
+::: abacatepay.products.models

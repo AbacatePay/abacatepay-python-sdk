@@ -1,2 +1,3 @@
 # Coupons reference
-::: abacatepay.coupons
+::: abacatepay.coupons.client
+::: abacatepay.coupons.models

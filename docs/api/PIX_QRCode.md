@@ -1,2 +1,3 @@
 # Customers reference
-::: abacatepay.pixQrCode
+::: abacatepay.pixQrCode.client
+::: abacatepay.pixQrCode.models

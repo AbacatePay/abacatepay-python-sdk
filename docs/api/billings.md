@@ -1,2 +1,3 @@
 # Billings reference
-::: abacatepay.billings
+::: abacatepay.billings.client
+::: abacatepay.billings.models

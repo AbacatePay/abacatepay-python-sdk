@@ -1,2 +1,3 @@
 # Customers reference
-::: abacatepay.customers
+::: abacatepay.customers.client
+::: abacatepay.customers.models
