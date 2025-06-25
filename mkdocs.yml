@@ -31,7 +31,7 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Alterar para tema claro
-      primary: green
+      primary: black
       accent: teal
 
     - scheme: default
@@ -84,3 +84,6 @@ extra:
 
     - icon: fontawesome/brands/instagram
       link: https://www.instagram.com/abacatepay
+
+extra_css:
+  - stylesheets/custom.css
