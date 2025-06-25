@@ -1,6 +1,6 @@
 ## 1. Importe o SDK da {{ org_name }}
 /// warning | Aviso
-Caso ainda não tenha a sua chave de API siga o tutorial [**Como pegar minha chave de acesso**](/tutorials/getting_api_key/)
+Caso ainda não tenha a sua chave de API siga o tutorial [**Como pegar minha chave de acesso**](tutorials/getting_api_key.md)
 ///
 
 ```py

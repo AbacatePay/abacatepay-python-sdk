@@ -29,7 +29,7 @@ print(pix_qr.status)
 
 1. O valor é em **centavos** (ex: `500_00` = R$ 500,00).
 2. O campo `expires_in` é opcional (em segundos). Ex: `600` = 10 minutos.
-3. Você pode passar o cliente como `dict` ou [`abacatepay.customer.models.CustomerMetadata`](/api/customers/#abacatepay.customers.CustomerMetadata).
+3. Você pode passar o cliente como `dict` ou [`CustomerMetadata`][abacatepay.customers.CustomerMetadata].
 
 ---
 

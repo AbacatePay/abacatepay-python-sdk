@@ -12,7 +12,7 @@
 
 ## Início rápido
 /// admonition | Pré-requisitos
-- Ter uma conta na {{ org_name }} habilitada para aceitar pagamentos e uma chave de API. Caso ainda não tenha, veja o tutorial [**Como pegar minha chave de acesso**](/tutorials/getting_api_key/).
+- Ter uma conta na {{ org_name }} habilitada para aceitar pagamentos e uma chave de API. Caso ainda não tenha, veja o tutorial [**Como pegar minha chave de acesso**](tutorials/getting_api_key.md).
 {% include "templates/pre_requirements.md" %}
 ///
 
