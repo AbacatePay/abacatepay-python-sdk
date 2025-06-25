@@ -51,15 +51,19 @@ Siga os passos abaixo para começar:
    poetry run task fmt
    ```
 
-7. **Faça commit e envie suas alterações**
+7. **Não esqueça de documentar suas alterações**
+    Para documentação nos utilizamos o [MKdocs](https://www.mkdocs.org/user-guide/).
+    Também usamos [MKdocstrings](https://mkdocstrings.github.io/) para gerar a referência a partir de docstrings, portanto não esqueça de documentar suas funções e módulos devidamente.
 
-   ```bash
-   git add .
-   git commit -m "Adiciona feature ou correção: descrição curta"
-   git push origin nome-da-feature
-   ```
+8. **Faça commit e envie suas alterações**
 
-8. **Abra um Pull Request no GitHub** e descreva suas alterações com clareza.
+    ```bash
+    git add .
+    git commit -m "Adiciona feature ou correção: descrição curta"
+    git push origin nome-da-feature
+    ```
+
+9. **Abra um Pull Request no GitHub** e descreva suas alterações com clareza.
 
 ---
 
