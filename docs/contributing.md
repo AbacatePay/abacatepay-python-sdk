@@ -5,8 +5,7 @@ Siga os passos abaixo para começar:
 
 ## ✅ Pré-requisitos
 
-* [Python](https://www.python.org/downloads/) `>=3.10, <4.0`
-* [Poetry](https://python-poetry.org/) `>=1.6.1`
+{% include "templates/pre_requirements.md" %}
 
 ## 🚀 Passo a passo
 
@@ -16,40 +15,40 @@ Siga os passos abaixo para começar:
 2. **Clone o repositório do seu fork**
    Substitua `seu-usuario` pelo seu nome de usuário no GitHub:
 
-   ```bash
-   git clone https://github.com/seu-usuario/abacatepay.git
-   cd abacatepay
-   ```
+    ```bash
+    git clone https://github.com/seu-usuario/abacatepay.git
+    cd abacatepay
+    ```
 
 3. **Configure o ambiente virtual com o [Poetry](https://python-poetry.org/)**
 
-   > Caso ainda não tenha o Poetry instalado, siga as instruções [nesta página](https://python-poetry.org/docs/#installing-with-the-official-installer).
+    > Caso ainda não tenha o Poetry instalado, siga as instruções [nesta página](https://python-poetry.org/docs/#installing-with-the-official-installer).
 
-   ```bash
-   poetry install
-   ```
+    ```bash
+    poetry install
+    ```
 
 4. **Crie uma nova branch para suas alterações**
    Escolha um nome descritivo para a branch:
 
-   ```bash
-   git checkout -b nome-da-feature
-   ```
+    ```bash
+    git checkout -b nome-da-feature
+    ```
 
 5. **Execute os testes para garantir que tudo continua funcionando**
 
-   ```bash
-   poetry run task test
-   ```
+    ```bash
+    poetry run task test
+    ```
 
 6. **Verifique a formatação e os padrões de código**
    O comando de testes já verifica o estilo do código com o [Ruff](https://docs.astral.sh/ruff/).
    Caso necessário, corrija manualmente com:
 
-   ```bash
-   poetry run task lint
-   poetry run task fmt
-   ```
+    ```bash
+    poetry run task lint
+    poetry run task fmt
+    ```
 
 7. **Não esqueça de documentar suas alterações**
     Para documentação nos utilizamos o [MKdocs](https://www.mkdocs.org/user-guide/).

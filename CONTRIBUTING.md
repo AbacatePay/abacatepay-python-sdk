@@ -50,7 +50,11 @@ We welcome contributions to the **AbacatePay SDK**! Follow the steps below to ge
    poetry run task fmt
    ```
 
-7. **Commit and push your changes**
+7. **Don't forget to document your changes**
+   We use [MKDocs](https://www.mkdocs.org/user-guide/) for documentation.
+   We also use [MKDocStrings](https://mkdocstrings.github.io/) to generate reference documentation from docstrings, so make sure to properly document your functions and modules.
+
+8. **Commit and push your changes**
 
    ```bash
    git add .
@@ -58,7 +62,7 @@ We welcome contributions to the **AbacatePay SDK**! Follow the steps below to ge
    git push origin feature-name
    ```
 
-8. **Open a pull request** on GitHub and describe your changes clearly.
+9. **Open a pull request** on GitHub and describe your changes clearly.
 
 ---
 

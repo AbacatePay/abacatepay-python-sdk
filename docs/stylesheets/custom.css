@@ -1,0 +1,14 @@
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #07b375 !important;
+  --md-default-bg-color: #171a1a !important;
+}
+
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: #16a34a !important;
+  --md-default-bg-color: #e6e9e3 !important;
+  --md-code-bg-color: #d1d3ce !important;
+
+  a:hover {
+    color: #07b375 !important;
+  }
+}
