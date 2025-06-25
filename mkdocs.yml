@@ -2,10 +2,16 @@ site_name: AbacatePay
 repo_url: https://github.com/AbacatePay/abacatepay-python-sdk
 edit_uri: blob/main/docs/
 site_description: O SDK oficial de Python para integram com a AbacatePay.
-copyright: Copyright © 2024 AbacatePay
+copyright: Copyright &copy; 2024 AbacatePay
 
 nav:
   - Inicio: index.md
+  - Tutoriais:
+    - Como pegar minha chave de acesso: tutorials/getting_api_key.md
+    - Implementando um fluxo de cobrança: tutorials/billing_flow.md
+    - Gerenciando clientes: tutorials/managing_customers.md
+    - Criando uma cobrança PIX: tutorials/creating_a_pix_payment.md
+    - Criando um cupom de desconto: tutorials/applying_a_coupon.md
   - Como contribuir: contributing.md
   - Referencia da API (en):
     - Billings: api/billings.md
@@ -39,6 +45,7 @@ theme:
     annotation: material/plus-circle
   features:
     - content.code.annotate
+    - navigation.footer
 
 plugins:
 - macros
@@ -55,3 +62,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.blocks.admonition
+  - pymdownx.blocks.details
+
+extra:
+  org_name: AbacatePay
