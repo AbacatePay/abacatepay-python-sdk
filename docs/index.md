@@ -3,7 +3,7 @@
 1. [Inicio rápido](#inicio-rapido)
     - [Instalação](#instalacao)
     - [Criando a sua primeira cobrança](#criando-sua-primeira-cobranca)
-    - [Cadastrando o seu primeiro cliente](#criando-um-cliente)
+    - [Cadastrando o seu primeiro cliente](#criando-seu-primeiro-cliente)
 
 ## Inicio rápido
 /// admonition | Pré-requisitos.
@@ -65,11 +65,4 @@ customer = client.customers.create({
 })
 print(customer.email)
 #> customer@example.com
-```
-
-### Listando todos os clientes
-```py
-customers = client.customers.list()
-for customer in customers:
-    print(customer.id, customer.email)  # > cust_123 customer@email.com
 ```
