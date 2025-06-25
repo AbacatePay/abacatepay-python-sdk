@@ -56,7 +56,7 @@ class CouponIn(BaseModel):
 
 class Coupon(BaseModel):
     """
-    Represents a coupon model for retrieval.
+    Represents a coupon model.
 
     Attributes:
         id (str): The unique identifier for the coupon.

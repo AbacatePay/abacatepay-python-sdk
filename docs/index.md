@@ -1,4 +1,4 @@
-# {{author}} SDK python
+# {{ org_name }} SDK python
 
 1. [Inicio rápido](#inicio-rapido)
     - [Instalação](#instalacao)
