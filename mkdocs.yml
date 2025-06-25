@@ -67,6 +67,8 @@ markdown_extensions:
 extra:
   org_name: AbacatePay
   help_email: ajuda@abacatepay.com
+  oficial_website: https://abacatepay.com
+  oficial_documentation: https://docs.abacatepay.com/pages/introduction
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/AbacatePay
