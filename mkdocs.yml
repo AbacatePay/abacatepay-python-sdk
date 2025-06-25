@@ -66,3 +66,18 @@ markdown_extensions:
 
 extra:
   org_name: AbacatePay
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AbacatePay
+
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/yB5yKzp4gF
+
+    - icon: fontawesome/brands/twitter
+      link: https://x.com/abacatepay
+
+    - icon: fontawesome/brands/linkedin
+      link: https://br.linkedin.com/company/abacatepay?trk=public_post_feed-actor-name
+
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/abacatepay
