@@ -77,4 +77,4 @@ print(customer.email)
 ## **Sobre**
 A {{ org_name }} é um gateway de pagamento que surgiu da nossa própria necessidade de simplificar cobranças em nossos produtos.
 
-Em caso de duvidas ou suporte contate nos pelo email [ajuda@abacatepay.com](mailto:ajuda@abacatepay.com)
+Em caso de duvidas ou suporte contate nos pelo email [ajuda@abacatepay.com](mailto:{{help_email}})
