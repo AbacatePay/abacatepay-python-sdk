@@ -72,7 +72,7 @@ pretty = true
 python_version = "3.10"
 
 [tool.taskipy.tasks]
-lint = 'ruff check . && ruff check . --diff'
+lint = 'ruff check . --diff && ruff format --check'
 fmt = 'ruff check . --fix && ruff format'
 
 pre_test = 'task lint'

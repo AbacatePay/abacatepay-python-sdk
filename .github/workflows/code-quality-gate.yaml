@@ -5,7 +5,7 @@ on:
 
 jobs:
   lint:
-    name: Tests and SonarCloud
+    name: Code Quality Checker
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
