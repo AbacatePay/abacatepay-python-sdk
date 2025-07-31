@@ -1,6 +1,7 @@
 name: Code Quality Checker
 on:
   pull_request:
+    branches: [ main ]
 
 jobs:
   lint:
