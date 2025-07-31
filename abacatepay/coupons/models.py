@@ -44,14 +44,11 @@ class CouponIn(BaseModel):
     max_redeems: Optional[int] = Field(
         -1,
         description=(
-            'Maximum number of times the coupon can be '
-            'redeemed. Defaults to -1 for unlimited.'
+            'Maximum number of times the coupon can be redeemed. Defaults to -1 for unlimited.'
         ),
         serialization_alias='maxRedeems',
     )
-    metadata: dict[str, Any] = Field(
-        {}, description='Additional metadata for the coupon.'
-    )
+    metadata: dict[str, Any] = Field({}, description='Additional metadata for the coupon.')
 
 
 class Coupon(BaseModel):
@@ -80,9 +77,7 @@ class Coupon(BaseModel):
     )
     discount: int
     status: str
-    notes: str | None = Field(
-        None, validation_alias='notes', description="Coupon's description"
-    )
+    notes: str | None = Field(None, validation_alias='notes', description="Coupon's description")
     max_redeems: int = Field(
         -1,
         validation_alias='maxRedeems',

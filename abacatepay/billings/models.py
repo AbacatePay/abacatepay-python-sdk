@@ -46,9 +46,7 @@ class BillingIn(BaseModel):
     products: List[Product]
     return_url: HttpUrl = Field(serialization_alias='returnUrl')
     completion_url: HttpUrl = Field(serialization_alias='completionUrl')
-    customer_id: Optional[CustomerID] = Field(
-        None, serialization_alias='customerId'
-    )
+    customer_id: Optional[CustomerID] = Field(None, serialization_alias='customerId')
     customer: CustomerMetadata | dict[str, Any] = {}
 
 

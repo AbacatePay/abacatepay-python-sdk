@@ -27,9 +27,7 @@ class APIStatusError(APIError):
     response: requests.Response
     status_code: int
 
-    def __init__(
-        self, message: str = '', *, response: requests.Response
-    ) -> None:
+    def __init__(self, message: str = '', *, response: requests.Response) -> None:
         super().__init__(message, response.request)
         self.response = response
         self.status_code = response.status_code
@@ -95,8 +93,7 @@ class APIConnectionError(APIError):
         self,
         *,
         message: str = (
-            'The request was unsuccessful due to a connection error.'
-            ' Check your internet connection'
+            'The request was unsuccessful due to a connection error. Check your internet connection'
         ),
         request: requests.Request,
     ) -> None:
@@ -135,9 +132,7 @@ class BadRequestError(APIStatusError):
 class NotFoundError(APIStatusError):
     status_code: Literal[HTTPStatus.NOT_FOUND]
 
-    def __init__(
-        self, message: str = '', *, response: requests.Response
-    ) -> None:
+    def __init__(self, message: str = '', *, response: requests.Response) -> None:
         super().__init__(message, response=response)
         self.status_code = HTTPStatus.NOT_FOUND
 
@@ -169,9 +164,7 @@ def raise_for_status(response: requests.Response) -> None:
         HTTPStatus.UNAUTHORIZED: UnauthorizedRequest(response=response),
         HTTPStatus.FORBIDDEN: ForbiddenRequest(response=response),
         HTTPStatus.NOT_FOUND: NotFoundError(response=response),
-        HTTPStatus.INTERNAL_SERVER_ERROR: InternalServerError(
-            response=response
-        ),
+        HTTPStatus.INTERNAL_SERVER_ERROR: InternalServerError(response=response),
     }
 
     code = response.status_code

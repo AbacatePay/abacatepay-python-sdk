@@ -10,9 +10,7 @@ logger = getLogger(__name__)
 
 
 class PixQrCodeClient(BaseClient):
-    def create(
-        self, data: PixQrCodeIn | dict[str, Any], **kwargs: Any
-    ) -> PixQrCode:
+    def create(self, data: PixQrCodeIn | dict[str, Any], **kwargs: Any) -> PixQrCode:
         """
         Create a new Pix QR Code.
 
@@ -55,9 +53,7 @@ class PixQrCodeClient(BaseClient):
         )
         return PixStatus.model_validate(response.json()['data'])
 
-    def simulate(
-        self, id: str, metadata: dict[str, Any] | None = None
-    ) -> PixQrCode:
+    def simulate(self, id: str, metadata: dict[str, Any] | None = None) -> PixQrCode:
         """
         Simulate a Pix QR Code.
 

@@ -10,9 +10,7 @@ logger = getLogger(__name__)
 
 
 class BillingClient(BaseClient):
-    def create(
-        self, data: BillingIn | dict[str, Any] | None = None, **kwargs: Any
-    ) -> Billing:
+    def create(self, data: BillingIn | dict[str, Any] | None = None, **kwargs: Any) -> Billing:
         """
         Create a new billing.
 

@@ -14,6 +14,7 @@ class Product(BaseModel):
         quantity (int): the number of units of the given product (min: 1).
         price (int): the price of the product in cents (min: 100).
     """
+
     external_id: str = Field(
         validation_alias=AliasChoices('externalId', 'external_id'),
         serialization_alias='externalId',
@@ -32,6 +33,7 @@ class ProductInline(BaseModel):
         external_id (str): the product ID in your application.
         quantity (int): the number of units of the given product.
     """
+
     id: str
     external_id: str = Field(
         validation_alias=AliasChoices('external_id', 'externalId'),

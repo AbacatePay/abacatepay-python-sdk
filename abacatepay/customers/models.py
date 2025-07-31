@@ -12,6 +12,7 @@ class CustomerMetadata(BaseModel):
         email (str): the customer email address
         cellphone: (str): the customer phone number.
     """
+
     tax_id: str = Field(
         serialization_alias='taxId',
         validation_alias=AliasChoices('taxId', 'tax_id'),
@@ -27,13 +28,11 @@ class CustomerInline(BaseModel):
     Args:
         metadata (Customer): the metadata of the customer.
     """
+
     metadata: CustomerMetadata
 
 
-CustomerID = Annotated[
-    str,
-    StringConstraints(pattern=r'^cust_[A-Za-z0-9]+$')
-]
+CustomerID = Annotated[str, StringConstraints(pattern=r'^cust_[A-Za-z0-9]+$')]
 
 
 class Customer(CustomerInline):
@@ -47,6 +46,7 @@ class Customer(CustomerInline):
         name (str): the customer's name
         cellphone (str): the customer's phone number
     """
+
     id: CustomerID
 
     @property

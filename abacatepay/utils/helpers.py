@@ -22,9 +22,7 @@ def prepare_data(
         return {k: v for k, v in validated_data.items() if v != {}}
 
     elif isinstance(data, dict):
-        validated_data = model_cls.model_validate(data).model_dump(
-            by_alias=use_alias
-        )
+        validated_data = model_cls.model_validate(data).model_dump(by_alias=use_alias)
         return {k: v for k, v in validated_data.items() if v != {}}
 
     raise TypeError('Invalid data type.')

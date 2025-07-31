@@ -22,6 +22,7 @@ class PixQrCode(BaseModel):
         updated_at (str): Update date of the Pix QRCode.
         expires_at (str): Expiration date of the Pix QRCode.
     """
+
     id: str = Field(
         description='Unique identifier of the Pix QRCode.',
         examples=['pix_char_123456'],
@@ -78,6 +79,7 @@ class PixStatus(BaseModel):
         status (str): Information about the status of the Pix QRCode.
         expires_at (str): Expiration date of the Pix QRCode.
     """
+
     status: PIX_QR_CODE_STATUS = Field(
         description=(
             'Information about the status of the Pix QRCode. '
@@ -103,6 +105,7 @@ class PixQrCodeIn(BaseModel):
         customer (dict[str, Any] | CustomerMetadata): Customer information.
             Optional.
     """
+
     amount: int = Field(
         description='Amount to be paid in cents.',
         examples=[100],
