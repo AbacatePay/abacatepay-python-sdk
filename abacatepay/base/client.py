@@ -41,6 +41,4 @@ class BaseClient:
             raise APITimeoutError(request=request)
 
         except requests.exceptions.ConnectionError:
-            raise APIConnectionError(
-                message='Connection error.', request=request
-            )
+            raise APIConnectionError(message='Connection error.', request=request)
