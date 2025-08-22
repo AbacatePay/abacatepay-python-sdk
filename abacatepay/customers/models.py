@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 
 from pydantic import AliasChoices, BaseModel, Field, StringConstraints
 
@@ -29,7 +29,7 @@ class CustomerInline(BaseModel):
         metadata (Customer): the metadata of the customer.
     """
 
-    metadata: CustomerMetadata
+    metadata: Optional[CustomerMetadata] = None
 
 
 CustomerID = Annotated[str, StringConstraints(pattern=r'^cust_[A-Za-z0-9]+$')]
