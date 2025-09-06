@@ -1,16 +1,20 @@
 from http import HTTPStatus
-from typing import Literal
+from typing import Literal, Union
 
+import httpx
 import requests
+
+RequestType = Union[requests.Request, httpx.Request]
+ResponseType = Union[requests.Response, httpx.Response]
 
 
 class APIError(Exception):
     """The exception was raised due to an API error."""
 
     message: str
-    request: str
+    request: RequestType
 
-    def __init__(self, message: str, request: requests.Request) -> None:
+    def __init__(self, message: str, request: RequestType) -> None:
         super().__init__(message)
         self.message = """The exception was raised due to an API error."""
         self.request = request
@@ -24,10 +28,10 @@ class APIError(Exception):
 class APIStatusError(APIError):
     """Raised when an API response has a status code of 4xx or 5xx."""
 
-    response: requests.Response
+    response: ResponseType
     status_code: int
 
-    def __init__(self, message: str = '', *, response: requests.Response) -> None:
+    def __init__(self, message: str = '', *, response: ResponseType) -> None:
         super().__init__(message, response.request)
         self.response = response
         self.status_code = response.status_code
@@ -41,7 +45,7 @@ class ForbiddenRequest(APIStatusError):
 
     status_code: Literal[HTTPStatus.FORBIDDEN]
 
-    def __init__(self, response: requests.Response, message: str = ''):
+    def __init__(self, response: ResponseType, message: str = ''):
         super().__init__(message, response=response)
         self.message = (
             'Means that the request was unsuccessful due to a '
@@ -67,7 +71,7 @@ class UnauthorizedRequest(APIStatusError):
 
     status_code: Literal[HTTPStatus.UNAUTHORIZED]
 
-    def __init__(self, response: requests.Response, message: str = ''):
+    def __init__(self, response: ResponseType, message: str = ''):
         super().__init__(message, response=response)
         self.message = (
             'Means that the request was unsuccessful due to a forbidden '
@@ -95,7 +99,7 @@ class APIConnectionError(APIError):
         message: str = (
             'The request was unsuccessful due to a connection error. Check your internet connection'
         ),
-        request: requests.Request,
+        request: RequestType,
     ) -> None:
         super().__init__(message, request)
 
@@ -104,7 +108,7 @@ class APITimeoutError(APIConnectionError):
     """The request got timed out. You might try checking
     your internet connection."""
 
-    def __init__(self, request: requests.Request) -> None:
+    def __init__(self, request: RequestType) -> None:
         super().__init__(
             message='Request timed out. Check your internet connection',
             request=request,
@@ -117,22 +121,27 @@ class BadRequestError(APIStatusError):
 
     status_code: Literal[HTTPStatus.BAD_REQUEST]
 
-    def __init__(self, response: requests.Response) -> None:
+    def __init__(self, response: ResponseType) -> None:
         self.response = response
         self.status_code = HTTPStatus.BAD_REQUEST
 
     def __str__(self) -> str:
+        try:
+            error_json = self.response.json()
+        except (ValueError, TypeError):
+            error_json = 'Invalid JSON'
+
         return (
             f'The request was unsuccessful due to a bad request. '
             'Maybe the request syntax is wrong. Message error: '
-            f'{self.response.json()}'
+            f'{error_json}'
         )
 
 
 class NotFoundError(APIStatusError):
     status_code: Literal[HTTPStatus.NOT_FOUND]
 
-    def __init__(self, message: str = '', *, response: requests.Response) -> None:
+    def __init__(self, message: str = '', *, response: ResponseType) -> None:
         super().__init__(message, response=response)
         self.status_code = HTTPStatus.NOT_FOUND
 
@@ -148,7 +157,7 @@ class InternalServerError(APIStatusError):
 
     status_code: Literal[500] = 500
 
-    def __init__(self, response: requests.Response) -> None:
+    def __init__(self, response: ResponseType) -> None:
         super().__init__(
             message=(
                 'The request was unsuccessful due to an internal server error.'
@@ -158,7 +167,7 @@ class InternalServerError(APIStatusError):
         )
 
 
-def raise_for_status(response: requests.Response) -> None:
+def raise_for_status(response: ResponseType) -> None:
     code_exc_dict = {
         HTTPStatus.BAD_REQUEST: BadRequestError(response=response),
         HTTPStatus.UNAUTHORIZED: UnauthorizedRequest(response=response),
