@@ -29,15 +29,46 @@ print(billing.data.url)
 More examples found on https://docs.abacatepay.com/
 """
 
-from .billings import BillingClient
-from .coupons import CouponClient
-from .customers import CustomerClient
-from .pixQrCode import PixQrCodeClient
+from typing import overload
+
+from .billings import BillingAsyncClient, BillingClient
+from .coupons import CouponAsyncClient, CouponClient
+from .customers import CustomerAsyncClient, CustomerClient
+from .pixQrCode import PixQrCodeAsyncClient, PixQrCodeClient
 
 
-class AbacatePay:
+class AbacatePayClient:
     def __init__(self, api_key: str):
         self.billing = BillingClient(api_key)
         self.customers = CustomerClient(api_key)
         self.coupons = CouponClient(api_key)
         self.pixQrCode = PixQrCodeClient(api_key)
+
+
+class AbacatePayAsyncClient:
+    def __init__(self, api_key: str):
+        self.billing = BillingAsyncClient(api_key)
+        self.customers = CustomerAsyncClient(api_key)
+        self.coupons = CouponAsyncClient(api_key)
+        self.pixQrCode = PixQrCodeAsyncClient(api_key)
+
+
+@overload
+def AbacatePay(api_key: str, *, async_mode: bool = False) -> AbacatePayClient: ...
+@overload
+def AbacatePay(api_key: str, *, async_mode: bool = True) -> AbacatePayAsyncClient: ...
+
+
+def AbacatePay(api_key: str, async_mode: bool = False) -> AbacatePayClient | AbacatePayAsyncClient:
+    """
+    Create an instance of AbacatePayClient or AbacatePayAsyncClient,
+    based on the async_mode parameter.
+
+    Args:
+        api_key (str): The API key for the AbacatePay client.
+        async_mode (bool): Whether to use the asynchronous client.
+    """
+    if async_mode:
+        return AbacatePayAsyncClient(api_key)
+
+    return AbacatePayClient(api_key)
