@@ -122,9 +122,9 @@ async def test_async_request_override_httpx_timeout_and_connection_error(mocker,
     """test that the async request overrides the httpx timeout and connection error"""
 
     request = httpx.Request('GET', url)
-    exception_instance = httpx_exc_class("boom", request=request)
+    exception_instance = httpx_exc_class("test", request=request)
 
     mocker.patch('abacatepay.base.client.httpx.AsyncClient.send', side_effect=exception_instance)
-    
+
     with pytest.raises(api_exc_class):
         await async_client._request(url, "GET")
