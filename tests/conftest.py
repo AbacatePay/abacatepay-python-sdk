@@ -367,3 +367,101 @@ def list_more_than_one_billing_json_data():
         ],
         "error": None
     }
+
+@pytest.fixture
+def customer_response_sample(one_customer_metadata_sample):
+    """return a sample data of the customer returned by API"""
+    return {
+        "id": "cust_avjgeigjge",
+        "metadata": one_customer_metadata_sample.model_dump(by_alias=True)
+    }
+
+@pytest.fixture
+def list_customers_json_data():
+    """Returns JSON data for customer list response"""
+    return {
+        "data": [
+            {
+                "metadata": {
+                    "taxId": "445.665.140-72",
+                    "name": "customer name",
+                    "email": "email@email.com",
+                    "cellphone": "(99) 9999-9999",
+                },
+                "id": 'cust_fdsjioe1'
+            },
+            {
+                "metadata": {
+                    "taxId": "261.474.540-56",
+                    "name": "customer name",
+                    "email": "email@email.com",
+                    "cellphone": "(99) 9999-9999",
+                },
+                "id": 'cust_jfeios213'
+            },
+        ],
+        "error": None
+    }
+
+@pytest.fixture
+def list_multiple_customers_json_data():
+    """Returns JSON data for multiple customers list response"""
+    # Similar to above but with more if needed, but for now duplicate
+    return {
+        "data": [
+            {
+                "metadata": {
+                    "taxId": "445.665.140-72",
+                    "name": "customer name",
+                    "email": "email@email.com",
+                    "cellphone": "(99) 9999-9999",
+                },
+                "id": 'cust_fdsjioe1'
+            },
+            {
+                "metadata": {
+                    "taxId": "261.474.540-56",
+                    "name": "customer name",
+                    "email": "email@email.com",
+                    "cellphone": "(99) 9999-9999",
+                },
+                "id": 'cust_jfeios213'
+            },
+        ],
+        "error": None
+    }
+
+
+@pytest.fixture
+def async_list_customers_mock(respx_mock, list_customers_json_data):
+    """Fixture that configures the mock for async list_customers"""
+    respx_mock.get('https://api.abacatepay.com/v1/customer/list').mock(
+        return_value=httpx.Response(200, json=list_customers_json_data)
+    )
+    return respx_mock
+
+
+@pytest.fixture
+def async_list_multiple_customers_mock(respx_mock, list_multiple_customers_json_data):
+    """Fixture that configures the mock for async list_customers with multiple items"""
+    respx_mock.get('https://api.abacatepay.com/v1/customer/list').mock(
+        return_value=httpx.Response(200, json=list_multiple_customers_json_data)
+    )
+    return respx_mock
+
+
+@pytest.fixture
+def async_create_customer_mock(respx_mock, customer_response_sample):
+    """Fixture that configures the mock for async create_customer"""
+    respx_mock.post('https://api.abacatepay.com/v1/customer/create').mock(
+        return_value=httpx.Response(200, json={'data': customer_response_sample, 'error': None})
+    )
+    return respx_mock
+
+
+@pytest.fixture
+def async_invalid_token_response(respx_mock):
+    respx_mock.get("https://api.abacatepay.com/v1/billing/list").mock(
+        return_value=httpx.Response(401)
+    )
+    return respx_mock
