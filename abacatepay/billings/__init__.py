@@ -1,4 +1,4 @@
-from .client import BillingClient
+from .client import BillingAsyncClient, BillingClient
 from .models import (
     Billing,
     BillingIn,
@@ -7,6 +7,7 @@ from .models import (
 )
 
 __all__ = [
+    'BillingAsyncClient',
     'BillingClient',
     'Billing',
     'BillingList',
