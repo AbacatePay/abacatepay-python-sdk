@@ -29,7 +29,7 @@ print(billing.data.url)
 More examples found on https://docs.abacatepay.com/
 """
 
-from typing import overload
+from typing import Literal, overload
 
 from .billings import BillingAsyncClient, BillingClient
 from .coupons import CouponAsyncClient, CouponClient
@@ -54,9 +54,9 @@ class AbacatePayAsyncClient:
 
 
 @overload
-def AbacatePay(api_key: str, *, async_mode: bool = False) -> AbacatePayClient: ...
+def AbacatePay(api_key: str, *, async_mode: Literal[False] = False) -> AbacatePayClient: ...
 @overload
-def AbacatePay(api_key: str, *, async_mode: bool = True) -> AbacatePayAsyncClient: ...
+def AbacatePay(api_key: str, *, async_mode: Literal[True] = True) -> AbacatePayAsyncClient: ...
 
 
 def AbacatePay(api_key: str, async_mode: bool = False) -> AbacatePayClient | AbacatePayAsyncClient:
