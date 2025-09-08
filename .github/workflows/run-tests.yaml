@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt && \
-          pip install pytest pytest-cov pytest-mock responses pytest-responses
+          pip install pytest pytest-cov pytest-mock responses pytest-responses respx
 
       - name: Run tests
         run: |
