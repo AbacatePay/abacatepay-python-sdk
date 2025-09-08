@@ -12,7 +12,7 @@ pydantic = "^2.10.3"
 requests = "^2.32.3"
 httpx = "^0.28.1"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
 pytest-mock = "^3.14.0"
 pytest-responses = "^0.5.1"
