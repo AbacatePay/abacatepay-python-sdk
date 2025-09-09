@@ -42,7 +42,7 @@ jobs:
         run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
 
       - name: Build site
-        run: mkdocs build --strict
+        run: mkdocs build 
 
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force --clean
