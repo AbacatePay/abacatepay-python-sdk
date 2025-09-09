@@ -4,7 +4,8 @@
 ![PyPI Downloads](https://img.shields.io/pypi/dm/abacatepay)
 
 > A Python SDK to simplify interactions with the AbacatePay API. <br />
-> This SDK provides tools for billing management, customer handling, and more.
+> This SDK provides tools for billing management, customer handling, and more. <br />
+> Supports both synchronous and asynchronous usage, in a simple way.
 
 
 [English](README.md) | [Português](README-pt.md)
@@ -19,6 +20,7 @@
   - [Create a Billing](#create-a-billing)
   - [List All Billings](#list-all-billings)
   - [Customer Management](#customer-management)
+- [Tutorials](#tutorials)
 - [Contributing](#contributing)
 
 ---
@@ -118,3 +120,9 @@ print(created_customer.id)
 
 We welcome contributions to the **AbacatePay SDK**!
 To get started, please follow the steps in our [Contributing Guide](./CONTRIBUTING.md).
+
+
+## Tutorials
+Check out the tutorials section in the docs:
+
+- [Tutorials (docs)](docs/tutorials/)

@@ -4,7 +4,8 @@
 ![PyPI Downloads](https://img.shields.io/pypi/dm/abacatepay)
 
 > Um SDK Python para simplificar a interação com a API do AbacatePay. <br />
-> Esse SDK fornece ferramentas para gerenciamento de faturamento, gerenciamento de clientes e muito mais.
+> Esse SDK fornece ferramentas para gerenciamento de faturamento, gerenciamento de clientes e muito mais. <br />
+> Suporte aos modos síncrono e assíncrono, de forma simplificada.
 
 [Inglês](README.md) | [Português](README-pt.md)
 
@@ -18,6 +19,7 @@
   - [Criar uma fatura](#criar-uma-fatura)
   - [Listar todas as faturas](#listar-todas-as-faturas)
   - [Gerenciamento de clientes](#gerenciamento-de-clientes)
+- [Tutoriais](#tutoriais)
 - [Contribuindo](#contribuindo)
 
 ---
@@ -116,3 +118,9 @@ print(created_customer.id)
 
 Contribuições para o **SDK do AbacatePay** são muito bem-vindas!
 Para colaborar, siga as instruções do nosso [guia de contribuição](./CONTRIBUTING-pt.md).
+
+
+## Tutoriais
+Confira a seção de tutoriais na documentação:
+
+- [Tutoriais (docs)](docs/tutorials/)
