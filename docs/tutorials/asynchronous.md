@@ -1,4 +1,4 @@
-Use o modo assíncrono para ganhar desempenho em cenários I/O‑bound (múltiplas chamadas de rede concorrentes), evitando bloquear threads da sua aplicação. 
+Use o modo assíncrono para ganhar desempenho em cenários I/O‑bound (múltiplas chamadas de rede concorrentes), evitando bloquear threads da sua aplicação.
 Ele é ideal para integrações com APIs, processamento em lote e outras operações que aguardam respostas externas. O SDK fornece clientes assíncronos com a mesma interface dos clientes síncronos.
 
 ---
@@ -22,9 +22,10 @@ client = AbacatePayAsyncClient("<sua chave de API>")
 ```
 
 /// admonition | Atenção
+
 - O uso é semelhante ao modo síncrono, porém as chamadas aos métodos são `await` e devem ocorrer dentro de uma função `async`.
 - Para executar uma função `async` em scripts, use `asyncio.run(...)`.
-///
+  ///
 
 ---
 
@@ -60,7 +61,7 @@ if __name__ == "__main__":
 3. O cliente pode ser um `dict` ou [`CustomerMetadata`][abacatepay.customers.CustomerMetadata].
 
 /// details | Referência (Async)
-:::: abacatepay.pixQrCode.client.PixQrCodeAsyncClient.create
+::: abacatepay.pixQrCode.client.PixQrCodeAsyncClient.create
 ///
 
 ---
@@ -91,8 +92,8 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
-Isso pode ser útil para criar lotes de cobranças e enviá-las mais rápido, ou para executar tarefas repetitivas em paralelo. Use conforme a sua necessidade.
----
+
+## Isso pode ser útil para criar lotes de cobranças e enviá-las mais rápido, ou para executar tarefas repetitivas em paralelo. Use conforme a sua necessidade.
 
 ## 4. Exemplo com FastAPI
 
@@ -115,10 +116,10 @@ async def criar_pix(payload: PixCreateRequest):
 ```
 
 /// admonition | Por que não bloqueia?
+
 - Enquanto a função aguarda `await client.pixQrCode.create(...)`, o loop de eventos pode atender outras requisições.
 - No modo síncrono, a thread ficaria ocupada até a resposta da API, reduzindo a concorrência.
-///
-
+  ///
 
 Pronto! Agora você sabe iniciar e utilizar o cliente assíncrono. Se ainda não criou sua chave de API, veja: [Como pegar minha chave de acesso](getting_api_key.md). Para operações específicas, consulte os tutoriais:
 
