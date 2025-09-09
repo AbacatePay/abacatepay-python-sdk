@@ -8,6 +8,8 @@ nav:
   - Inicio: index.md
   - Tutoriais:
     - Como pegar minha chave de acesso: tutorials/getting_api_key.md
+    - Criando o cliente: tutorials/create_client.md
+    - Uso assíncrono: tutorials/asynchronous.md
     - Implementando um fluxo de cobrança: tutorials/billing_flow.md
     - Gerenciando clientes: tutorials/managing_customers.md
     - Criando uma cobrança PIX: tutorials/creating_a_pix_payment.md
