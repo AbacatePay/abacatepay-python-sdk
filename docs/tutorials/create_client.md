@@ -48,6 +48,7 @@ client = AbacatePay("<sua chave de API>", async_mode=True)  # retorna AbacatePay
 Também é possível importar as classes diretamente para uma declaração explícita:
 
 === "Síncrono (classe explícita)"
+
     ```py
     from abacatepay import AbacatePayClient
 
@@ -55,6 +56,7 @@ Também é possível importar as classes diretamente para uma declaração expl�
     ```
 
 === "Assíncrono (classe explícita)"
+
     ```py
     from abacatepay import AbacatePayAsyncClient
 
@@ -69,4 +71,4 @@ Para um guia completo sobre padrões de uso com `asyncio`, veja: [Uso assíncron
 
 - Quer criar sua primeira cobrança? Veja: [Criando um Pix QR Code](creating_a_pix_payment.md)
 - Quer cadastrar clientes? Veja: [Gerenciando clientes](managing_customers.md)
--. Quer desempenho com muitas chamadas? Veja: [Uso assíncrono](asynchronous.md)
+- Quer desempenho com muitas chamadas? Veja: [Uso assíncrono](asynchronous.md)
