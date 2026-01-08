@@ -76,6 +76,7 @@ pretty = true
 python_version = "3.10"
 
 [tool.taskipy.tasks]
+ci = 'pre-commit run --all-files'
 lint = 'ruff check . --diff && ruff format --check'
 fmt = 'ruff check . --fix && ruff format'
 
