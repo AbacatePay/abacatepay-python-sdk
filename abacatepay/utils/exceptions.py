@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Literal, Union
+from typing import Union
 
 import httpx
 import requests
@@ -43,7 +43,7 @@ class ForbiddenRequest(APIStatusError):
     Maybe your API key is wrong?
     """
 
-    status_code: Literal[HTTPStatus.FORBIDDEN]
+    status_code: int
 
     def __init__(self, response: ResponseType, message: str = ''):
         super().__init__(message, response=response)
@@ -69,7 +69,7 @@ class UnauthorizedRequest(APIStatusError):
     Maybe your API key doesn't have enought permissions
     """
 
-    status_code: Literal[HTTPStatus.UNAUTHORIZED]
+    status_code: int
 
     def __init__(self, response: ResponseType, message: str = ''):
         super().__init__(message, response=response)
@@ -119,7 +119,7 @@ class BadRequestError(APIStatusError):
     """The request was unsuccessful due to a bad request.
     Maybe the request syntax is wrong"""
 
-    status_code: Literal[HTTPStatus.BAD_REQUEST]
+    status_code: int
 
     def __init__(self, response: ResponseType) -> None:
         self.response = response
@@ -139,7 +139,7 @@ class BadRequestError(APIStatusError):
 
 
 class NotFoundError(APIStatusError):
-    status_code: Literal[HTTPStatus.NOT_FOUND]
+    status_code: int
 
     def __init__(self, message: str = '', *, response: ResponseType) -> None:
         super().__init__(message, response=response)
@@ -155,7 +155,7 @@ class NotFoundError(APIStatusError):
 class InternalServerError(APIStatusError):
     """The request was unsuccessful due to an internal server error."""
 
-    status_code: Literal[500] = 500
+    status_code: int
 
     def __init__(self, response: ResponseType) -> None:
         super().__init__(
@@ -165,10 +165,11 @@ class InternalServerError(APIStatusError):
             ),
             response=response,
         )
+        self.status_code = HTTPStatus.INTERNAL_SERVER_ERROR
 
 
 def raise_for_status(response: ResponseType) -> None:
-    code_exc_dict = {
+    code_exc_dict: dict[int, APIStatusError] = {
         HTTPStatus.BAD_REQUEST: BadRequestError(response=response),
         HTTPStatus.UNAUTHORIZED: UnauthorizedRequest(response=response),
         HTTPStatus.FORBIDDEN: ForbiddenRequest(response=response),

@@ -52,19 +52,19 @@ class Customer(CustomerInline):
     @property
     def tax_id(self) -> str:
         """the customer identification (CPF or CNPJ)."""
-        return self.metadata.tax_id
+        return self.metadata.tax_id  # type: ignore
 
     @property
     def name(self) -> str:
         """the customer's name"""
-        return self.metadata.name
+        return self.metadata.name  # type: ignore
 
     @property
     def email(self) -> str:
         """the customer's email"""
-        return self.metadata.email
+        return self.metadata.email  # type: ignore
 
     @property
     def cellphone(self) -> str:
         """the customer's phone number"""
-        return self.metadata.cellphone
+        return self.metadata.cellphone  # type: ignore
