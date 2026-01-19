@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Union
+from typing import Literal, Union
 
 import httpx
 import requests
@@ -43,7 +43,7 @@ class ForbiddenRequest(APIStatusError):
     Maybe your API key is wrong?
     """
 
-    status_code: int
+    status_code: Literal[HTTPStatus.FORBIDDEN]
 
     def __init__(self, response: ResponseType, message: str = ''):
         super().__init__(message, response=response)
@@ -69,7 +69,7 @@ class UnauthorizedRequest(APIStatusError):
     Maybe your API key doesn't have enought permissions
     """
 
-    status_code: int
+    status_code: Literal[HTTPStatus.UNAUTHORIZED]
 
     def __init__(self, response: ResponseType, message: str = ''):
         super().__init__(message, response=response)
@@ -119,7 +119,7 @@ class BadRequestError(APIStatusError):
     """The request was unsuccessful due to a bad request.
     Maybe the request syntax is wrong"""
 
-    status_code: int
+    status_code: Literal[HTTPStatus.BAD_REQUEST]
 
     def __init__(self, response: ResponseType) -> None:
         self.response = response
@@ -139,7 +139,7 @@ class BadRequestError(APIStatusError):
 
 
 class NotFoundError(APIStatusError):
-    status_code: int
+    status_code: Literal[HTTPStatus.NOT_FOUND]
 
     def __init__(self, message: str = '', *, response: ResponseType) -> None:
         super().__init__(message, response=response)
@@ -155,7 +155,7 @@ class NotFoundError(APIStatusError):
 class InternalServerError(APIStatusError):
     """The request was unsuccessful due to an internal server error."""
 
-    status_code: int
+    status_code: Literal[HTTPStatus.INTERNAL_SERVER_ERROR]
 
     def __init__(self, response: ResponseType) -> None:
         super().__init__(
@@ -177,7 +177,7 @@ def raise_for_status(response: ResponseType) -> None:
         HTTPStatus.INTERNAL_SERVER_ERROR: InternalServerError(response=response),
     }
 
-    code = response.status_code
+    code = HTTPStatus(response.status_code)
     if code == HTTPStatus.OK:
         return
 
@@ -185,6 +185,6 @@ def raise_for_status(response: ResponseType) -> None:
         raise APIStatusError(message=response.text, response=response)
 
     raise code_exc_dict.get(
-        response.status_code,
+        HTTPStatus(response.status_code),
         APIError(message=response.text, request=response.request),
     )

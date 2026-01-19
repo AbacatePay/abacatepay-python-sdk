@@ -18,4 +18,4 @@ async def test_async_wrong_key_running_function(async_invalid_token_response):
 
     client = AbacatePay(rightKey, async_mode=True)
     with pytest.raises(UnauthorizedRequest):
-        await client.billing.list()        
+        await client.billing.list()
