@@ -28,20 +28,27 @@ Siga os passos abaixo para começar:
     poetry install
     ```
 
-4. **Crie uma nova branch para suas alterações**
+4. **Instalando pre-commit hooks**
+   Para garantir a qualidade do código durante o desenvolvimento, usamos [pre-commit](https://pre-commit.com/).
+
+   ```bash
+   poetry run pre-commit install
+   ```
+
+5. **Crie uma nova branch para suas alterações**
    Escolha um nome descritivo para a branch:
 
     ```bash
     git checkout -b nome-da-feature
     ```
 
-5. **Execute os testes para garantir que tudo continua funcionando**
+6. **Execute os testes para garantir que tudo continua funcionando**
 
     ```bash
     poetry run task test
     ```
 
-6. **Verifique a formatação e os padrões de código**
+7. **Verifique a formatação e os padrões de código**
    O comando de testes já verifica o estilo do código com o [Ruff](https://docs.astral.sh/ruff/).
    Caso necessário, corrija manualmente com:
 
@@ -50,11 +57,11 @@ Siga os passos abaixo para começar:
     poetry run task fmt
     ```
 
-7. **Não esqueça de documentar suas alterações**
+8. **Não esqueça de documentar suas alterações**
     Para documentação nos utilizamos o [MKdocs](https://www.mkdocs.org/user-guide/).
     Também usamos [MKdocstrings](https://mkdocstrings.github.io/) para gerar a referência a partir de docstrings, portanto não esqueça de documentar suas funções e módulos devidamente.
 
-8. **Faça commit e envie suas alterações**
+9. **Faça commit e envie suas alterações**
 
     ```bash
     git add .
@@ -62,7 +69,7 @@ Siga os passos abaixo para começar:
     git push origin nome-da-feature
     ```
 
-9. **Abra um Pull Request no GitHub** e descreva suas alterações com clareza.
+10. **Abra um Pull Request no GitHub** e descreva suas alterações com clareza.
 
 ---
 

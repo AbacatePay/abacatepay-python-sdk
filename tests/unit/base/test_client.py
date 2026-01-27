@@ -76,7 +76,7 @@ def test_request_raise_the_correct_exception_when_status_is_different_of_200(res
         url,
         status=status_code,
     )
-    
+
     with pytest.raises(exc_classname):
         client._request(url, "GET")
 

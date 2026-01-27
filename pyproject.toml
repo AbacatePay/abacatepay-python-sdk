@@ -23,6 +23,7 @@ taskipy = ">=1.14.1,<1.15"
 pytest-cov = "^6.2.1"
 pytest-asyncio = "^1.1.0"
 respx = "^0.22.0"
+pre-commit = "^4.5.1"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.6.14"
@@ -75,6 +76,7 @@ pretty = true
 python_version = "3.10"
 
 [tool.taskipy.tasks]
+ci = 'pre-commit run --all-files'
 lint = 'ruff check . --diff && ruff format --check'
 fmt = 'ruff check . --fix && ruff format'
 

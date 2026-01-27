@@ -13,9 +13,9 @@ def test_create_customer_with_model(customer_client, responses, one_customer_met
         json={'data': customer.model_dump(by_alias=True), 'error': None},
         status=200,
     )
-    
+
     client = customer_client.create(customer.metadata)
-    
+
     assert client == customer
 
 
@@ -30,9 +30,9 @@ def test_create_customer_with_dict(customer_client, responses, one_customer_meta
         json={'data': customer.model_dump(by_alias=True), 'error': None},
         status=200,
     )
-    
+
     client = customer_client.create(one_customer_metadata_sample.model_dump())
-    
+
     assert client == customer
 
 
@@ -47,9 +47,9 @@ def test_create_customer_with_kwargs(customer_client, responses, one_customer_me
         json={'data': customer.model_dump(by_alias=True), 'error': None},
         status=200,
     )
-    
+
     client = customer_client.create(**one_customer_metadata_sample.model_dump())
-    
+
     assert client == customer
 
 
@@ -78,9 +78,9 @@ async def test_async_create_customer_with_model(async_create_customer_mock, asyn
         metadata=one_customer_metadata_sample,
         id='cust_avjgeigjge'
     )
-    
+
     result = await async_customer_client.create(one_customer_metadata_sample)
-    
+
     assert result == customer
 
 
@@ -90,9 +90,9 @@ async def test_async_create_customer_with_dict(async_create_customer_mock, async
         metadata=one_customer_metadata_sample,
         id='cust_avjgeigjge'
     )
-    
+
     result = await async_customer_client.create(one_customer_metadata_sample.model_dump())
-    
+
     assert result == customer
 
 
@@ -102,9 +102,9 @@ async def test_async_create_customer_with_kwargs(async_create_customer_mock, asy
         metadata=one_customer_metadata_sample,
         id='cust_avjgeigjge'
     )
-    
+
     result = await async_customer_client.create(**one_customer_metadata_sample.model_dump())
-    
+
     assert result == customer
 
 

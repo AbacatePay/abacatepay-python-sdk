@@ -155,7 +155,7 @@ class NotFoundError(APIStatusError):
 class InternalServerError(APIStatusError):
     """The request was unsuccessful due to an internal server error."""
 
-    status_code: Literal[500] = 500
+    status_code: Literal[HTTPStatus.INTERNAL_SERVER_ERROR]
 
     def __init__(self, response: ResponseType) -> None:
         super().__init__(
@@ -165,10 +165,11 @@ class InternalServerError(APIStatusError):
             ),
             response=response,
         )
+        self.status_code = HTTPStatus.INTERNAL_SERVER_ERROR
 
 
 def raise_for_status(response: ResponseType) -> None:
-    code_exc_dict = {
+    code_exc_dict: dict[int, APIStatusError] = {
         HTTPStatus.BAD_REQUEST: BadRequestError(response=response),
         HTTPStatus.UNAUTHORIZED: UnauthorizedRequest(response=response),
         HTTPStatus.FORBIDDEN: ForbiddenRequest(response=response),
@@ -176,7 +177,7 @@ def raise_for_status(response: ResponseType) -> None:
         HTTPStatus.INTERNAL_SERVER_ERROR: InternalServerError(response=response),
     }
 
-    code = response.status_code
+    code = HTTPStatus(response.status_code)
     if code == HTTPStatus.OK:
         return
 
@@ -184,6 +185,6 @@ def raise_for_status(response: ResponseType) -> None:
         raise APIStatusError(message=response.text, response=response)
 
     raise code_exc_dict.get(
-        response.status_code,
+        HTTPStatus(response.status_code),
         APIError(message=response.text, request=response.request),
     )

@@ -4,3 +4,31 @@ repos:
     hooks:
       - id: check-yaml
       - id: trailing-whitespace
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.5
+    hooks:
+      - id: ruff-check
+        types_or: [python, pyi]
+        args: [--fix]
+
+      - id: ruff-format
+        types_or: [python, pyi]
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: run mypy for type checking
+        entry: poetry run mypy --show-error-codes --ignore-missing-imports .
+        language: system
+        pass_filenames: false
+        files: \.py$
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: run pytest for automatic testing
+        entry: poetry run pytest
+        language: system
+        pass_filenames: false
+        files: \.py$

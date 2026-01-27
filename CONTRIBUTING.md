@@ -28,20 +28,27 @@ We welcome contributions to the **AbacatePay SDK**! Follow the steps below to ge
    poetry install
    ```
 
-4. **Create a new branch for your changes**
+4. **Install pre-commit hooks**
+   To ensure consistent code quality during development, we use [pre-commit](https://pre-commit.com/) hooks.
+
+   ```bash
+   poetry run pre-commit install
+   ```
+
+5. **Create a new branch for your changes**
    Use a descriptive name for the feature or fix:
 
    ```bash
    git checkout -b feature-name
    ```
 
-5. **Run the tests** to ensure nothing is broken:
+6. **Run the tests** to ensure nothing is broken:
 
    ```bash
    poetry run task test
    ```
 
-6. **Check code style and formatting**
+7. **Check code style and formatting**
    The test command will also check code style using [Ruff](https://docs.astral.sh/ruff/).
    If formatting issues remain, you can fix them manually:
 
@@ -50,11 +57,11 @@ We welcome contributions to the **AbacatePay SDK**! Follow the steps below to ge
    poetry run task fmt
    ```
 
-7. **Don't forget to document your changes**
+8. **Don't forget to document your changes**
    We use [MKDocs](https://www.mkdocs.org/user-guide/) for documentation.
    We also use [MKDocStrings](https://mkdocstrings.github.io/) to generate reference documentation from docstrings, so make sure to properly document your functions and modules.
 
-8. **Commit and push your changes**
+9. **Commit and push your changes**
 
    ```bash
    git add .
@@ -62,7 +69,7 @@ We welcome contributions to the **AbacatePay SDK**! Follow the steps below to ge
    git push origin feature-name
    ```
 
-9. **Open a pull request** on GitHub and describe your changes clearly.
+10. **Open a pull request** on GitHub and describe your changes clearly.
 
 ---
 

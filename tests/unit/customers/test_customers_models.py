@@ -15,7 +15,7 @@ def test_customer():
         }
     }
     cus = Customer(**data)
-    assert cus.id == data["id"] 
+    assert cus.id == data["id"]
     assert cus.metadata.tax_id == data["metadata"]["taxId"]
 
 def test_customer_properties():
